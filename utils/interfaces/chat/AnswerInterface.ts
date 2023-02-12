@@ -1,6 +1,6 @@
-import { Scores } from "./ScoresInterface";
+import { ScoresInterface } from "./ScoresInterface";
 
-export interface Answer    {
+export interface AnswerInterface    {
     title: string,
-    scores: Scores
+    scores: ScoresInterface
 }

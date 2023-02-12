@@ -1,6 +1,6 @@
 <template>
-    <div class="message">
-        <div class="message-content"></div>
+    <div class="message" :class="messageType">
+        <slot class="message-content"></slot>
     </div>
 </template>
 
@@ -15,9 +15,23 @@
         &.received  {
             justify-content: flex-start;
         }
-        &.send  {
+        &.sent  {
             justify-content: flex-end;
         }
     }
 }
 </style>
+
+<script setup lang="ts">
+const props = defineProps({
+    isSent: { 
+        type: Boolean,
+        required: true
+    }
+})
+const messageType = useState<string>("messageType", () =>   {
+    return props.isSent ? "sent" : "received"
+})
+
+
+</script>

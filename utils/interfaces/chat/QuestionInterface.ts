@@ -1,6 +1,6 @@
-import { Answer } from "./AnswerInterface";
+import { AnswerInterface } from "./AnswerInterface";
 
-export interface Question  {
+export interface QuestionInterface  {
     title: string,
-    answers: Answer[]
+    answers: AnswerInterface[]
 }
