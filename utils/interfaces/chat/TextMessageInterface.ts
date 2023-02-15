@@ -1,4 +1,5 @@
 export interface TextMessageInterface    {
     type: string,
-    content: string
+    content: string,
+    time: string
 }
