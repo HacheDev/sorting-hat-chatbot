@@ -1,4 +1,28 @@
-.triangle(@color, @size, @direction)  {
+.triangle(@color, @size, @dir)  {
     width: 0;
     height: 0;
+}
+
+.triangle(@color, @size, @dir) when (@dir = 'up')  {
+    border-top: unit(@size, px) solid @color;
+    border-right: unit(@size, px) solid transparent;
+    border-left: unit(@size, px) solid transparent;
+}
+
+.triangle(@color, @size, @dir) when (@dir = 'down')  {
+    border-bottom: unit(@size, px) solid @color;
+    border-left: unit(@size, px) solid transparent;
+    border-right: unit(@size, px) solid transparent;
+}
+
+.triangle(@color, @size, @dir) when (@dir = 'right')  {
+    border-right: unit(@size, px) solid @color;
+    border-top: unit(@size, px) solid transparent;
+    border-bottom: unit(@size, px) solid transparent;
+}
+
+.triangle(@color, @size, @dir) when (@dir = 'left')  {
+    border-left: unit(@size, px) solid @color;
+    border-top: unit(@size, px) solid transparent;
+    border-bottom: unit(@size, px) solid transparent;
 }

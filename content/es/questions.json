@@ -1,0 +1,1258 @@
+[
+  {
+    "title": "¿Amanecer o al atardecer?",
+    "answers": [
+      {
+        "title": "Amanecer",
+        "scores": {
+          "g": 100,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Oscuridad",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 100
+        }
+      }
+    ]
+  },
+  {
+    "title": "¿Bosque o río?",
+    "answers": [
+      {
+        "title": "Bosque",
+        "scores": {
+          "g": 100,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Río",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 100
+        }
+      }
+    ]
+  },
+  {
+    "title": "¿Luna o estrellas?",
+    "answers": [
+      {
+        "title": "Luna",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "Estrellas",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "¿Cuál de los siguientes odiarías más que la gente te llame?",
+    "answers": [
+      {
+        "title": "Común",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "Ignorante",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Cobardemente",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Egoísta",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "Después de que hayas muerto, ¿qué es lo que más te gustaría que hicieran las personas cuando escuchan tu nombre?",
+    "answers": [
+      {
+        "title": "Te extraño, pero sonríe",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "Pide más historias sobre tus aventuras",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Piensa con admiración en tus logros",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "No me importa lo que la gente piense de mí después de muerto, lo que cuenta es lo que piensen de mí mientras esté vivo.",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      }
+    ]
+  },
+  {
+    "title": "¿Cómo te gustaría ser conocido en la historia?",
+    "answers": [
+      {
+        "title": "El sabio",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "El bueno",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "El gran",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "El audaz",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "Dada la elección, ¿preferirías inventar una poción que te garantice:",
+    "answers": [
+      {
+        "title": "¿Amar?",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "¿Gloria?",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "¿Sabiduría?",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "¿Fuerza?",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      }
+    ]
+  },
+  {
+    "title": "Una vez cada siglo, el arbusto Flutterby produce flores que adaptan su aroma para atraer a los incautos. ",
+    "answers": [
+      {
+        "title": "Una chimenea crepitante",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "El mar",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "pergamino fresco",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Hogar",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "Se colocan cuatro copas delante de ti. ",
+    "answers": [
+      {
+        "title": "El líquido espumoso, espumoso y plateado que brilla como si contuviera diamantes en polvo.",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "La bebida suave, espesa y ricamente morada que desprende un delicioso olor a chocolate y ciruelas.",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "El líquido dorado tan brillante que hace daño a la vista, y que hace bailar las manchas solares por toda la habitación.",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "El misterioso líquido negro que brilla como la tinta y emite vapores que te hacen ver extrañas visiones.",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      }
+    ]
+  },
+  {
+    "title": "¿Qué tipo de instrumento agrada más a tu oído?",
+    "answers": [
+      {
+        "title": "El violin",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "La trompeta",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "El piano",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "el tambor",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "Entras en un jardín encantado. ",
+    "answers": [
+      {
+        "title": "El árbol de hojas plateadas que da manzanas doradas",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Los gordos hongos rojos que parecen estar hablando entre sí",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "El estanque burbujeante, en cuyas profundidades se arremolina algo luminoso",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "La estatua de un anciano mago con un ojo extrañamente centelleante",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "Se colocan cuatro cajas delante de ti. ",
+    "answers": [
+      {
+        "title": "La pequeña caja de carey, adornada con oro, dentro de la cual una pequeña criatura parece estar chillando.",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "La reluciente caja negra azabache con una cerradura y una llave plateadas, marcada con una runa misteriosa que sabes que es la marca de Merlín.",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "El cofre de oro adornado, de pie sobre pies con garras, cuya inscripción advierte que tanto el conocimiento secreto como la tentación insoportable se encuentran en su interior.",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "La pequeña caja de peltre, sencilla y sin pretensiones, con un mensaje rayado que dice \"Solo abro para los dignos\".",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "Un troll se ha vuelto loco en el estudio del director en Hogwarts. ",
+    "answers": [
+      {
+        "title": "Primero, una cura casi perfecta para la viruela del dragón. ",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "Primero, registros de estudiantes que se remontan a 1000 años. ",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "Primero, un misterioso libro escrito a mano lleno de extrañas runas. ",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Primero, una cura casi perfecta para la viruela del dragón. ",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Primeros registros de estudiantes que se remontan a 1000 años. ",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "Primero, un misterioso libro escrito a mano lleno de extrañas runas. ",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 100
+        }
+      }
+    ]
+  },
+  {
+    "title": "¿Con cuál de los siguientes te resulta más difícil lidiar?",
+    "answers": [
+      {
+        "title": "Hambre",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "Frío",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 100
+        }
+      },
+      {
+        "title": "Soledad",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "Aburrimiento",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "Ser ignorado",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 100
+        }
+      }
+    ]
+  },
+  {
+    "title": "Cuál preferirías ser:",
+    "answers": [
+      {
+        "title": "envidiado?",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "¿Imitado?",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "¿De confianza?",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "¿Alabado?",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 50
+        }
+      },
+      {
+        "title": "¿Apreciado?",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "temido?",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      }
+    ]
+  },
+  {
+    "title": "Si pudieras tener algún poder, ¿cuál elegirías?",
+    "answers": [
+      {
+        "title": "El poder de leer la mente",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "El poder de la invisibilidad",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 50,
+          "s": 0
+        }
+      },
+      {
+        "title": "El poder de la fuerza sobrehumana",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 50
+        }
+      },
+      {
+        "title": "El poder de hablar con los animales",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "El poder de cambiar el pasado",
+        "scores": {
+          "g": 50,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "El poder de cambiar tu apariencia a voluntad.",
+        "scores": {
+          "g": 50,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "¿Qué es lo que más esperas aprender en Hogwarts?",
+    "answers": [
+      {
+        "title": "Aparición y Desaparición (poder materializarse y desmaterializarse a voluntad)",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "Transformación (convertir un objeto en otro objeto)",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Volando en una escoba",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "Maleficios y hechizos",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "Todo sobre criaturas mágicas y cómo hacerse amigo/cuidar de ellas",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "Secretos sobre el castillo.",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Cada área de la magia que pueda",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "¿Cuál de los siguientes te gustaría estudiar?",
+    "answers": [
+      {
+        "title": "centauros",
+        "scores": {
+          "g": 100,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "duendes",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 50
+        }
+      },
+      {
+        "title": "Gente del mar",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 100
+        }
+      },
+      {
+        "title": "fantasmas",
+        "scores": {
+          "g": 100,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "vampiros",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "hombres lobo",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "trolls",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 100
+        }
+      }
+    ]
+  },
+  {
+    "title": "Tú y dos amigos tenéis que cruzar un puente custodiado por un troll de río que insiste en luchar contra uno de vosotros antes de dejaros pasar a todos. ",
+    "answers": [
+      {
+        "title": "¿Intentar confundir al troll para que los deje pasar a los tres sin pelear?",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "¿Sugiere hacer un sorteo para decidir cuál de ustedes peleará?",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "¿Sugerir que los tres peleen (sin decírselo al troll)?",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "¿Voluntario para luchar?",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "Uno de tus compañeros de casa ha hecho trampa en un examen de Hogwarts usando una Pluma de Auto-Ortografía. ",
+    "answers": [
+      {
+        "title": "Miente y di que no sabes (pero espera que alguien más le diga la verdad al profesor Flitwick).",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "Dígale al profesor Flitwick que debería preguntarle a su compañero de clase (y resuelva decirle a su compañero de clase que si él no dice la verdad, usted lo hará).",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Dile al profesor Flitwick la verdad. ",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "No esperaría a que le pidieran que le dijera la verdad al profesor Flitwick. ",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      }
+    ]
+  },
+  {
+    "title": "Un muggle te confronta y dice que está seguro de que eres un mago o una bruja. ",
+    "answers": [
+      {
+        "title": "Pregunte qué les hace pensar eso.",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "De acuerdo, y pregúnteles si les gustaría una muestra gratis de una maldición.",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "Acepta y aléjate, dejando que se pregunten si estás mintiendo.",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Dígales que está preocupado por su salud mental y ofrezca llamar a un médico.",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "¿Qué pesadilla te atemorizaría más?",
+    "answers": [
+      {
+        "title": "Pararse encima de algo muy alto y darse cuenta de repente de que no hay puntos de apoyo para las manos ni para los pies, ni ninguna barrera que evite que caiga.",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Un ojo en el ojo de la cerradura de la habitación oscura y sin ventanas en la que estás encerrado.",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Despertar y descubrir que ni tus amigos ni tu familia tienen idea de quién eres.",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "Ser forzado a hablar con una voz tan tonta que casi nadie puede entenderte, y todos se ríen de ti.",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      }
+    ]
+  },
+  {
+    "title": "Que camino te tienta más?",
+    "answers": [
+      {
+        "title": "El camino ancho, soleado y cubierto de hierba",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "El callejón estrecho, oscuro e iluminado por faroles",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "El camino retorcido y cubierto de hojas a través del bosque",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "La calle adoquinada bordeada de edificios antiguos.",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "A altas horas de la noche, caminando solo por la calle, escuchas un grito peculiar que crees que tiene un origen mágico. ",
+    "answers": [
+      {
+        "title": "Proceda con precaución, manteniendo una mano en su varita oculta y atento a cualquier perturbación.",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "¿Saca tu varita y trata de descubrir la fuente del ruido?",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "¿Saca tu varita y mantente firme?",
+        "scores": {
+          "g": 0,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "Retirarse a las sombras para esperar los desarrollos, mientras revisa mentalmente los hechizos defensivos y ofensivos más apropiados, en caso de que surjan problemas.",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "Si asistieras a Hogwarts, ¿qué mascota elegirías llevar contigo?",
+    "answers": [
+      {
+        "title": "Gato atigrado",
+        "scores": {
+          "g": 50,
+          "r": 0,
+          "h": 0,
+          "s": 50
+        }
+      },
+      {
+        "title": "gato siames",
+        "scores": {
+          "g": 25,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "Gato anaranjado",
+        "scores": {
+          "g": 25,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "Gato negro",
+        "scores": {
+          "g": 25,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "gato blanco",
+        "scores": {
+          "g": 25,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "Buho Carabo",
+        "scores": {
+          "g": 25,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Chillido búho",
+        "scores": {
+          "g": 25,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Búho marrón",
+        "scores": {
+          "g": 25,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Buho Nevado",
+        "scores": {
+          "g": 25,
+          "r": 50,
+          "h": 50,
+          "s": 0
+        }
+      },
+      {
+        "title": "Lechuza",
+        "scores": {
+          "g": 25,
+          "r": 100,
+          "h": 0,
+          "s": 0
+        }
+      },
+      {
+        "title": "Sapo común",
+        "scores": {
+          "g": 25,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "Sapo corredor",
+        "scores": {
+          "g": 25,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "Sapo dragón",
+        "scores": {
+          "g": 50,
+          "r": 0,
+          "h": 50,
+          "s": 0
+        }
+      },
+      {
+        "title": "Sapo arlequín",
+        "scores": {
+          "g": 25,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "Sapo de árbol de tres dedos",
+        "scores": {
+          "g": 25,
+          "r": 50,
+          "h": 50,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "¿Blanco o negro?",
+    "answers": [
+      {
+        "title": "Negro",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "Blanco",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 100,
+          "s": 0
+        }
+      }
+    ]
+  },
+  {
+    "title": "¿Cara o corona?",
+    "answers": [
+      {
+        "title": "cabezas",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 100,
+          "s": 0
+        }
+      },
+      {
+        "title": "Cruz",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 0,
+          "s": 100
+        }
+      }
+    ]
+  },
+  {
+    "title": "¿Izquierda o derecha?",
+    "answers": [
+      {
+        "title": "Izquierda",
+        "scores": {
+          "g": 0,
+          "r": 100,
+          "h": 0,
+          "s": 100
+        }
+      },
+      {
+        "title": "Bien",
+        "scores": {
+          "g": 100,
+          "r": 0,
+          "h": 100,
+          "s": 0
+        }
+      }
+    ]
+  }
+]
