@@ -1,6 +1,6 @@
 <template>
     <div class="message" :class="messageType">
-        <nuxt-img v-if="props.isBotMessage == true" src="/sorting-hat.jpg"></nuxt-img>
+        <nuxt-img class="user-icon" v-if="props.isBotMessage == true" src="/sorting-hat.jpg"></nuxt-img>
         <div class="message-content">
             <h3>{{ messageOwnerName }}</h3>
             <slot class="message-text"></slot>
@@ -12,6 +12,12 @@
 .message    {
     display: flex;
     margin: auto;
+    align-items: center;
+    .user-icon  {
+        max-width: 4rem;
+        max-height: 4rem;
+        border-radius: 50%;
+    }
     &.received  {
         justify-content: flex-start;
     }
