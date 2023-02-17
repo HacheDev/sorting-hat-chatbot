@@ -1,23 +1,33 @@
 <template>
-    <div class="chat-header">Sorting Hat</div>
     <div class="chat-container">
         <div v-if="pending">loading...</div>
         <div v-else>
-            <Message v-for="message in messages" :key="message.content" :isBotMessage="message.owner == 'bot'">
-                <template #text>
-                    {{ message.content }}
-                </template>
-                <template #time>
-                    {{ message.time }}
-                </template>
-                   
-            </Message>
+            <TransitionGroup name="message">
+                <Message v-for="message in messages" :key="message.content" :isBotMessage="message.owner == 'bot'">
+                    <template #text>
+                        {{ message.content }}
+                    </template>
+                    <template #time>
+                        {{ message.time }}
+                    </template>
+                    
+                </Message>
+            </TransitionGroup>
         </div>
     </div>
 </template>
 
 <style lang="less" scoped>
 .chat-container {
+    .message-enter-active,
+    .message-leave-active   {
+        transition: all 1s ease;
+    }
+    .message-enter-from,
+    .message-leave-to {
+        opacity: 0;
+        transform: translateX(30px);
+    }
     
 }
 </style>
