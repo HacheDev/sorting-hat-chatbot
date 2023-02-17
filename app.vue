@@ -1,6 +1,7 @@
 <template>
   <NuxtLayout>
     <Chat></Chat>
+    <AnswersCard></AnswersCard>
   </NuxtLayout>
 </template>
 

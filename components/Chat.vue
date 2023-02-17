@@ -4,7 +4,13 @@
         <div v-if="pending">loading...</div>
         <div v-else>
             <Message v-for="message in messages" :key="message.content" :isBotMessage="message.owner == 'bot'">
-                {{ message.content }}   {{ message.time }}
+                <template #text>
+                    {{ message.content }}
+                </template>
+                <template #time>
+                    {{ message.time }}
+                </template>
+                   
             </Message>
         </div>
     </div>
@@ -17,18 +23,18 @@
 </style>
 
 <script lang="ts" setup>
-
-import { TextMessageInterface } from "~~/utils/interfaces/chat/TextMessageInterface";
-import TextMessage from "~~/utils/classes/chat/TextMessage";
-// import { Question } from "~~/utils/interfaces/chat/QuestionInterface"
-const getMessageTime = (): string => {
-    const currentDate = new Date()
-    return currentDate.getHours() + ":" + (currentDate.getMinutes() < 10 ? "0" : "") + currentDate.getMinutes()
-}
+import Question from "~~/utils/classes/Question";
+import TextMessage from "~~/utils/classes/TextMessage";
+import { getMessageTime } from "~~/utils/functions/getMessageTime";
 
 const questionNumber = useState<number>("questionNumber", () => 0)
 const { pending, data: questions } = await useAsyncData("questions", () =>  queryContent(useState("localeState").value + "/questions").findOne())
-const messages = useState<TextMessage[]>("Textmessages", () => [new TextMessage("bot", questions.value.body[0].title, getMessageTime()), new TextMessage("user", questions.value.body[1].title, getMessageTime())])
+const currentQuestion = useState<Question>("currentQuestion", () => new Question(questions.value.body[questionNumber.value].title, questions.value.body[questionNumber.value].answers))
+// const currentQuestion = computed((): Question =>  {
+//     return new Question(questions.value.body[questionNumber.value].title, questions.value.body[questionNumber.value].answers)
+// })
+const messages = useState<TextMessage[]>("textMessages", () => [new TextMessage("bot", questions.value.body[0].title, getMessageTime()), new TextMessage("user", questions.value.body[1].title, getMessageTime())])
+// const currentScore = useState<
 
 // console.log(messages[0])
 // console.log(messages[1])

@@ -1,11 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    css: ['assets/less/colors.less', 'assets/less/style.less', 'assets/less/mixins.less' ],
+    css: [ 'assets/less/main.less', 'assets/less/mixins.less' ],
     vite:   {
         css: {
             preprocessorOptions:    {
                 less:   {
-                    additionalData: '@import "@/assets/less/colors.less";'
+                    additionalData: '@import "@/assets/less/variables.less";@import "@/assets/less/mixins.less";'
                 }
             }
         }
