@@ -1,10 +1,10 @@
 <template>
-    <span v-if="!isAnswerEmpty">{{ selectedAnswer.title }}</span>
-    <span v-else>{{ defaultAnswer["title"] }}</span>
+    <span v-if="!isAnswerEmpty && selectedAnswer.title">{{ selectedAnswer.title }}</span>
+    <span v-else-if="!pending && defaultAnswer">{{ defaultAnswer["title"] }}</span>
     <button @click="sendAnswer()">send</button>
-    <div class="answers-container">
-        <button v-if="!pending" v-for="(answer, index) in answers" @click="selectAnswer(answer)">{{ answer.title }}</button>
-    </div>
+    <!-- <div v-if="currentQuestion.answers[0]" class="answers-container">
+        <button v-for="answer in currentQuestion.answers" :key="answer.title" @click="selectAnswer(answer)">{{ answer.title }}</button>
+    </div> -->
 </template>
 
 <script lang="ts" setup>
@@ -15,23 +15,33 @@ import TextMessage from "~~/utils/classes/TextMessage";
 import { getMessageTime } from '~~/utils/functions/getMessageTime';
 import { AnswerInterface } from '~~/utils/interfaces/AnswerInterface';
 
-const { pending, data: defaultAnswer } = await useAsyncData("default-answer", () =>  queryContent(useState("localeState").value + "/default-answer").findOne())
+const { pending, data: defaultAnswer } = await useAsyncData("defaultAnswer", () =>  queryContent(useState("localeState").value + "/default-answer").findOne())
 
-const isAnswerEmpty = useState<boolean>("isAnswerEmpty", () => true)
-// let answerEmpty = isAnswerEmpty.value
-const selectedAnswer = useState<Answer>("selectedAnswer")
-console.log(selectedAnswer.value)
-const questionNumber = useState<number>("questionNumber")
-const currentQuestion = useState<Question>("currentQuestion")
-const answers: ComputedRef<AnswerInterface[]> = computed(() =>    currentQuestion.value.answers)
+const isAnswerEmpty = useIsAnswerEmpty()
+const selectedAnswer = useSelectedAnswer()
+// const { selectedAnswer, setDefaultAnswer } = useSelectedAnswer()
+// console.log(selectedAnswer.value)
+const questionNumber = useQuestionNumber()
+// const currentQuestion = useCurrentQuestion()
+// const answers: ComputedRef<AnswerInterface[]> = computed(() =>    useState<Question>("currentQuestion").value.answers)
+// const answers = useAnswers()
+const { currentQuestion, setQuestion } = useCurrentQuestion()
+await setQuestion()
+// console.log(currentQuestion.value)
+// const answers = computed(() => currentQuestion.currentQuestion.value.answers)
+
 // console.log(currentQuestion.value.answers[1].title)
 const selectAnswer = (answer: Answer) => {
     selectedAnswer.value = new Answer(answer.title, answer.scores)
     isAnswerEmpty.value = false
 }
-const messages = useState<TextMessage[]>("textMessages")
+const messages = useMessages()
 const sendAnswer = () => {
-    messages.value.push(new TextMessage("user", selectedAnswer.value.title, getMessageTime()))
-    ++questionNumber.value
+    if(!isAnswerEmpty.value) {
+        messages.value.push(new TextMessage("user", selectedAnswer.value.title, getMessageTime()))
+        ++questionNumber.value
+        setQuestion()
+        isAnswerEmpty.value = true
+    }
 }
 </script>

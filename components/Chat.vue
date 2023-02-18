@@ -1,6 +1,6 @@
 <template>
     <div class="chat-container">
-        <div v-if="pending">loading...</div>
+        <div v-if="!messages">loading...</div>
         <div v-else>
             <TransitionGroup name="message">
                 <Message v-for="message in messages" :key="message.content" :isBotMessage="message.owner == 'bot'">
@@ -37,13 +37,18 @@ import Question from "~~/utils/classes/Question";
 import TextMessage from "~~/utils/classes/TextMessage";
 import { getMessageTime } from "~~/utils/functions/getMessageTime";
 
-const questionNumber = useState<number>("questionNumber", () => 0)
-const { pending, data: questions } = await useAsyncData("questions", () =>  queryContent(useState("localeState").value + "/questions").findOne())
-const currentQuestion = useState<Question>("currentQuestion", () => new Question(questions.value.body[questionNumber.value].title, questions.value.body[questionNumber.value].answers))
+const questionNumber = useQuestionNumber()
+const messages = useMessages()
+const currentQuestion = useCurrentQuestion()
+const { pending, data: questions } = await useAsyncData("questions", async() =>  {
+    const {pending,data:response} = await useAsyncData(() => queryContent(useState("localeState").value + "/questions").findOne())
+    currentQuestion.value = response.value.body[useQuestionNumber().value]
+})
+// const currentQuestion = useState<Question>("currentQuestion")
 // const currentQuestion = computed((): Question =>  {
 //     return new Question(questions.value.body[questionNumber.value].title, questions.value.body[questionNumber.value].answers)
 // })
-const messages = useState<TextMessage[]>("textMessages", () => [new TextMessage("bot", questions.value.body[0].title, getMessageTime()), new TextMessage("user", questions.value.body[1].title, getMessageTime())])
+// const messages = useState<TextMessage[]>("textMessages", () => [new TextMessage("bot", questions.value.body[0].title, getMessageTime()), new TextMessage("user", questions.value.body[1].title, getMessageTime())])
 // const currentScore = useState<
 
 // console.log(messages[0])
