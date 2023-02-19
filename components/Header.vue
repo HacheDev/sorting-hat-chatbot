@@ -1,8 +1,7 @@
 <template>
     
     <header class="main-header">
-        <nuxt-img class="user-icon" src="/sorting-hat.jpg"></nuxt-img>
-        {{ botName }}
+        <h1 class="main-title" v-if="!pending && webName">{{ webName.title }}</h1>
     </header>
 </template>
 
@@ -17,17 +16,21 @@
     justify-content: flex-start;
     color: white;
     text-transform: capitalize;
-    .user-icon  {
-        max-width: 5rem;
-        max-height: 5rem;
-        border-radius: 50%;
-        margin: 0 40px;
+    .main-title {
+        margin: auto;
     }
+
 }
 </style>
 
 <script lang="ts" setup>
-const { pending, data: chatName } = await useAsyncData("chatNames", () =>  queryContent(useState("localeState").value + "/chat-names").only(["bot"]).findOne())
-const botName: string = chatName.value.bot
+const { pending, data: webName } = await useAsyncData("webName", () =>  queryContent(useCurrentLocale().value + "/web-info").only(["title"]).findOne())
+
+// let botName: string
+// watch(pending, (newPending) =>  {
+//     if(!newPending) {
+//         botName = chatName.value.bot
+//     }
+// })
 
 </script>

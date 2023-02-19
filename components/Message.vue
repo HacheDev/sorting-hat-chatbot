@@ -117,11 +117,11 @@ const props = defineProps({
 })
 const messageType: string = props.isBotMessage ? "received" : "sent"
 
-const { pending, data: chatNames } = await useAsyncData("chatNames", () =>  queryContent(useState("localeState").value + "/chat-names").findOne())
+const { pending, data: chatNames } = await useAsyncData("chatNames", () =>  queryContent(useCurrentLocale().value + "/chat-names").findOne())
 const messageOwnerName: string = props.isBotMessage ? chatNames.value.bot : chatNames.value.user
 console.log(messageOwnerName)
-const questionNumber = useQuestionNumber()
-const currentQuestion = useCurrentQuestion()
+// const questionNumber = useQuestionNumber()
+// const currentQuestion = useCurrentQuestion()
 
 
 // console.log(messageType)

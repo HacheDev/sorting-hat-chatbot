@@ -1,4 +1,5 @@
 <template>
+    <ChatHeader></ChatHeader>
     <div class="chat-container">
         <div v-if="!messages">loading...</div>
         <div v-else>
@@ -15,6 +16,7 @@
             </TransitionGroup>
         </div>
     </div>
+    <AnswersCard></AnswersCard>
 </template>
 
 <style lang="less" scoped>
@@ -33,13 +35,23 @@
 </style>
 
 <script lang="ts" setup>
+import { useCurrentLocale, useQuestionsList } from "~~/composables/states";
 import Question from "~~/utils/classes/Question";
 import TextMessage from "~~/utils/classes/TextMessage";
 import { getMessageTime } from "~~/utils/functions/getMessageTime";
 
+const { pending, data: questions } = await useAsyncData(() =>   queryContent(useCurrentLocale().value + "/questions").findOne())
+const questionsList = useQuestionsList()
+watch(questionsList, (newQuestions) =>  {
+    questionsLoaded.value = true
+})
+questionsList.value = questions.value.body
 const questionNumber = useQuestionNumber()
 const messages = useMessages()
 const currentQuestion = useCurrentQuestion()
+const questionsLoaded = useQuestionsLoaded()
+currentQuestion.value = useQuestionsList().value[useQuestionNumber().value]
+
 // const { pending, data: questions } = await useAsyncData("questions", async() =>  {
 //     const {pending,data:response} = await useAsyncData(() => queryContent(useState("localeState").value + "/questions").findOne())
 //     currentQuestion.value = response.value.body[useQuestionNumber().value]

@@ -1,16 +1,18 @@
 <template>
   <NuxtLayout>
     <Chat></Chat>
-    <AnswersCard></AnswersCard>
   </NuxtLayout>
 </template>
 
 <script lang="ts" setup>
+import { useCurrentLocale } from './composables/states';
+
   useHead({
     bodyAttrs:  {
       class: "custom-body"
     }
   })
+  const currentLocale = useCurrentLocale()
   const { locale } = useI18n()
-  const localeState = useState<string>("localeState", () => locale)
+  currentLocale.value = locale.value
 </script>
