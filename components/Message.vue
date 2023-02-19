@@ -8,7 +8,7 @@
                 <span class="message-time">
                     <slot name="time"></slot>
                 </span>
-                <span>{{ currentQuestion }}</span>
+                <!-- <span>{{ currentQuestion }}</span> -->
             </div>
         </div>
     </div>
@@ -30,24 +30,28 @@
     .message    {
         display: flex;
         flex-direction: column;
-        border: 1px solid white;
-        border-radius: 10%;
+        // border: 1px solid white;
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        border-left: 1px solid white;
+        border-radius: 5%;
+        // overflow: hidden;
         position: relative;
         .message-owner  {
             background-color: @primary-color;
             padding: 5px 10px;
             margin: 0;
-            border-top-left-radius: 10%;
-            border-top-right-radius: 10%;
-            border-top: 1px solid white;
-            border-right: 1px solid white;
-            border-left: 1px solid white;
+            // border-top-left-radius: 10%;
+            // border-top-right-radius: 10%;
+            // border-top: 1px solid white;
+            // border-right: 1px solid white;
+            // border-left: 1px solid white;
         }
         .message-content    {
             padding: 5px 10px;
-            border: 1px solid white;
-            border-bottom-left-radius: 10%;
-            border-bottom-right-radius: 10%;
+            // border: 1px solid white;
+            // border-bottom-left-radius: 10%;
+            // border-bottom-right-radius: 10%;
             .message-time   {
                 margin-top: 5px;
                 font-size: 0.75rem;

@@ -12,6 +12,5 @@
     }
   })
   const { locale } = useI18n()
-  console.log(locale)
   const localeState = useState<string>("localeState", () => locale)
 </script>

@@ -40,10 +40,10 @@ import { getMessageTime } from "~~/utils/functions/getMessageTime";
 const questionNumber = useQuestionNumber()
 const messages = useMessages()
 const currentQuestion = useCurrentQuestion()
-const { pending, data: questions } = await useAsyncData("questions", async() =>  {
-    const {pending,data:response} = await useAsyncData(() => queryContent(useState("localeState").value + "/questions").findOne())
-    currentQuestion.value = response.value.body[useQuestionNumber().value]
-})
+// const { pending, data: questions } = await useAsyncData("questions", async() =>  {
+//     const {pending,data:response} = await useAsyncData(() => queryContent(useState("localeState").value + "/questions").findOne())
+//     currentQuestion.value = response.value.body[useQuestionNumber().value]
+// })
 // const currentQuestion = useState<Question>("currentQuestion")
 // const currentQuestion = computed((): Question =>  {
 //     return new Question(questions.value.body[questionNumber.value].title, questions.value.body[questionNumber.value].answers)
