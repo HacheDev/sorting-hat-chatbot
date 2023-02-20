@@ -16,6 +16,7 @@
     justify-content: flex-start;
     color: white;
     text-transform: capitalize;
+    z-index: 10;
     .main-title {
         margin: auto;
     }
@@ -24,7 +25,9 @@
 </style>
 
 <script lang="ts" setup>
-const { pending, data: webName } = await useAsyncData("webName", () =>  queryContent(useCurrentLocale().value + "/web-info").only(["title"]).findOne())
+const { locale } = useI18n()
+
+const { pending, data: webName } = await useAsyncData("webName", () =>  queryContent(locale.value + "/web-info").only(["title"]).findOne())
 
 // let botName: string
 // watch(pending, (newPending) =>  {

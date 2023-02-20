@@ -13,12 +13,13 @@
     position: relative;
     display: flex;
     background-color: @primary-color;
-    font-size: 2.5rem;
+    // font-size: 2.5rem;
     padding: 30px 0;
     align-items: center;
     justify-content: flex-start;
     color: white;
     text-transform: capitalize;
+    z-index: 20;
 
     &::after   {
         content: "";
@@ -51,7 +52,9 @@
 </style>
 
 <script lang="ts" setup>
-const { pending, data: botName } = await useAsyncData("chatNames", () =>  queryContent(useCurrentLocale().value + "/chat-names").only(["bot"]).findOne())
+const { locale } = useI18n()
+
+const { pending, data: botName } = await useAsyncData("chatNames", () =>  queryContent(locale.value + "/chat-names").only(["bot"]).findOne())
 
 const botStatus = computed(():string => useIsBotTurn().value ? "writing..." : "online")
 

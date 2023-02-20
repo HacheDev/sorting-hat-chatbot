@@ -1,6 +1,8 @@
 export interface ScoresInterface    {
-    g: number,
-    r: number,
-    h: number,
-    s: number
+    g: number;
+    r: number;
+    h: number;
+    s: number;
+    addScores(newScores: ScoresInterface): ScoresInterface
+
 }

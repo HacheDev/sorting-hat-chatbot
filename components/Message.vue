@@ -30,15 +30,15 @@
     .message    {
         display: flex;
         flex-direction: column;
-        // border: 1px solid white;
-        border-bottom: 1px solid white;
-        border-right: 1px solid white;
-        border-left: 1px solid white;
-        border-radius: 5%;
+        border: 1px solid white;
+        // border-bottom: 1px solid white;
+        // border-right: 1px solid white;
+        // border-left: 1px solid white;
+        border-radius: 9999px;
         // overflow: hidden;
         position: relative;
         .message-owner  {
-            background-color: @primary-color;
+            // background-color: @primary-color;
             padding: 5px 10px;
             margin: 0;
             // border-top-left-radius: 10%;
@@ -74,7 +74,7 @@
                 &::before    {
                     content: '';
                     position: absolute;
-                    top: 50%;
+                    top: 40%;
                     right: 100%;
                     .triangle(white, 10, left);
                 }
@@ -97,7 +97,7 @@
                 &::before    {
                     content: '';
                     position: absolute;
-                    top: 50%;
+                    top: 40%;
                     left: 100%;
                     .triangle(white, 10, right);
                 }
@@ -117,7 +117,9 @@ const props = defineProps({
 })
 const messageType: string = props.isBotMessage ? "received" : "sent"
 
-const { pending, data: chatNames } = await useAsyncData("chatNames", () =>  queryContent(useCurrentLocale().value + "/chat-names").findOne())
+const { locale } = useI18n()
+
+const { pending, data: chatNames } = await useAsyncData("chatNames", () =>  queryContent(locale.value + "/chat-names").findOne())
 const messageOwnerName: string = props.isBotMessage ? chatNames.value.bot : chatNames.value.user + " (" + useUserName().value + ")"
 
 

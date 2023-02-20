@@ -1,7 +1,7 @@
 import Answer from "~~/utils/classes/Answer"
 import TextMessage from "~~/utils/classes/TextMessage"
 import { getMessageTime } from "~~/utils/functions/getMessageTime"
-import { useIsNameChosen } from "./states"
+import { useIsNameChosen, useTotalScores } from "./states"
 
 export const selectAnswer = (answer: Answer) => {
     const isBotTurn = useIsBotTurn()
@@ -24,11 +24,18 @@ export const sendAnswer = async() => {
         const currentQuestion = useCurrentQuestion()
         const selectedAnswer = useSelectedAnswer()
         const questionsList = useQuestionsList()
+        const totalScores = useTotalScores()
 
         
         messages.value.push(new TextMessage("user", selectedAnswer.value.title, getMessageTime()))
+        totalScores.value.addScores(selectedAnswer.value.scores)
         ++questionNumber.value
-        await sendBotMessage(1000)
+   
+        if (questionsList.value.length <= questionNumber.value) {
+            await sendResult(1000)
+        } else {
+            await sendBotMessage(1000)
+        }
         // setTimeout(() =>    {
             // currentQuestion.value = questionsList.value[questionNumber.value]
             // messages.value.push(new TextMessage("bot", currentQuestion.value.title, getMessageTime()))
@@ -46,6 +53,20 @@ export const sendBotMessage = async(duration: number): Promise<unknown> => {
     return new Promise(() => setTimeout(() =>   {
         currentQuestion.value = questionsList.value[questionNumber.value]
         messages.value.push(new TextMessage("bot", currentQuestion.value.title, getMessageTime()))
+        isBotTurn.value = false
+    }, duration))
+}
+
+export const sendResult = async(duration: number): Promise<unknown> =>  {
+    const messages = useMessages()
+    const totalScores = useTotalScores()
+
+    const isBotTurn = useIsBotTurn()
+    const result = totalScores.value.g.toString() + " " + totalScores.value.h.toString() + " " + totalScores.value.r.toString() + " " + totalScores.value.s.toString()
+    
+    return new Promise(() => setTimeout(() =>   {
+
+        messages.value.push(new TextMessage("bot", result, getMessageTime()))
         isBotTurn.value = false
     }, duration))
 }

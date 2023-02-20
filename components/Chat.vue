@@ -23,15 +23,18 @@
 
 <style lang="less" scoped>
 .chat-container {
-    height: 100%;
+    height: auto;
+    // max-height: 30%;
     overflow-y: scroll;
     .chat   {    
         display: flex;
         flex-direction: column-reverse;
-        
+        max-height: 400px;
         .chat-content {
             display: flex;
             flex-direction: column;
+            max-height: 10%;
+            scroll-behavior: smooth;
             .message-enter-active,
             .message-leave-active   {
                 transition: all 1s ease;
@@ -48,12 +51,10 @@
 </style>
 
 <script lang="ts" setup>
-import { useCurrentLocale, useQuestionsList } from "~~/composables/states";
-import Question from "~~/utils/classes/Question";
-import TextMessage from "~~/utils/classes/TextMessage";
-import { getMessageTime } from "~~/utils/functions/getMessageTime";
+import { useQuestionsList } from "~~/composables/states";
+const { locale } = useI18n()
 
-const { pending, data: questions } = await useAsyncData(() =>   queryContent(useCurrentLocale().value + "/questions").findOne())
+const { pending, data: questions } = await useAsyncData(() =>   queryContent(locale.value + "/questions").findOne())
 const questionsList = useQuestionsList()
 watch(questionsList, (newQuestions) =>  {
     questionsLoaded.value = true
