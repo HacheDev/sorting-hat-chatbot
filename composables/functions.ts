@@ -1,6 +1,7 @@
 import Answer from "~~/utils/classes/Answer"
 import TextMessage from "~~/utils/classes/TextMessage"
 import { getMessageTime } from "~~/utils/functions/getMessageTime"
+import { useIsNameChosen } from "./states"
 
 export const selectAnswer = (answer: Answer) => {
     const isBotTurn = useIsBotTurn()
@@ -47,4 +48,12 @@ export const sendBotMessage = async(duration: number): Promise<unknown> => {
         messages.value.push(new TextMessage("bot", currentQuestion.value.title, getMessageTime()))
         isBotTurn.value = false
     }, duration))
+}
+
+export const saveUserName = async() =>   {
+    const { data: defaultUserName } = await useAsyncData("defaultUserName", () =>  queryContent(useCurrentLocale().value + "/chat-names").only(["defaultUserName"]).findOne())
+    if(!useUserName().value)    {
+        useUserName().value = defaultUserName.value.defaultUserName
+    }
+    useIsNameChosen().value = true
 }

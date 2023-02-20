@@ -1,4 +1,5 @@
 {
     "bot": "Sombrero seleccionador",
-    "user": "Tú"
+    "user": "Tú",
+    "defaultUserName": "Anónimo"
 }

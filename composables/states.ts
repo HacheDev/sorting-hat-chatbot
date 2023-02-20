@@ -13,3 +13,5 @@ export const useMessages = () =>   useState<TextMessage[]>("textMessages", () =>
 export const useIsAnswerEmpty = () => useState<boolean>("isAnswerEmpty", () => true)
 export const useSelectedAnswer = () =>  useState<Answer>("selectedAnswer", () => new Answer("Select an answer below", new Scores(0,0,0,0)))
 export const useIsBotTurn = () => useState<boolean>("isBotTurn", () => false)
+export const useIsNameChosen = () => useState<boolean>("isNameChosen", () =>    false)
+export const useUserName = () =>    useState<string>("userName")
