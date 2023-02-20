@@ -93,18 +93,18 @@ export const sendResult = async(duration: number): Promise<unknown> =>  {
     }, duration))
 }
 
-export const saveUserName = async() =>   {
-    const { locale } = useI18n()
-    const { data: defaultUserName } = await useAsyncData("defaultUserName", () =>  queryContent(locale.value + "/chat-names").only(["defaultUserName"]).findOne())
-    const messages = useMessages()
-    const userName = useUserName()
-    if(!userName.value)    {
-        userName.value = defaultUserName.value.defaultUserName
-    }
-    messages.value.push(new TextMessage("user", userName.value, getMessageTime()))
-    useIsNameChosen().value = true
-    // await sendBotMessage(1000)
-}
+// export const saveUserName = async() =>   {
+//     const { locale } = useI18n()
+//     const { data: defaultUserName } = await useAsyncData("defaultUserName", () =>  queryContent(locale.value + "/chat-names").only(["defaultUserName"]).findOne())
+//     const messages = useMessages()
+//     const userName = useUserName()
+//     if(!userName.value)    {
+//         userName.value = defaultUserName.value.defaultUserName
+//     }
+//     messages.value.push(new TextMessage("user", userName.value, getMessageTime()))
+//     useIsNameChosen().value = true
+//     // await sendBotMessage(1000)
+// }
 
 
 // export const saveUserName = async() =>   {

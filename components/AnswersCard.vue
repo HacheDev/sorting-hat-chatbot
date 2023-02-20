@@ -103,8 +103,12 @@
 import { selectAnswer, sendAnswer, saveUserName } from '~~/composables/functions';
 import { useIsNameChosen, useUserName } from '~~/composables/states';
 import Answer from '~~/utils/classes/Answer';
+import TextMessage from '~~/utils/classes/TextMessage';
+import { getMessageTime } from '~~/utils/functions/getMessageTime';
 
 const { locale } = useI18n()
+
+const { data: defaultUserName } = await useAsyncData("defaultUserName", () =>  queryContent(locale.value + "/chat-names").only(["defaultUserName"]).findOne())
 
 const { pending, data: placeholders } = await useAsyncData(() =>   queryContent(locale.value + "/placeholders").findOne())
 // await sendNameQuestion(1000)
@@ -118,6 +122,18 @@ const currentQuestion = useCurrentQuestion()
 
 const isNameChosen = useIsNameChosen()
 const userName = useUserName()
+
+const saveUserName = () =>   {
+    const messages = useMessages()
+    const userName = useUserName()
+    if(!userName.value)    {
+        userName.value = defaultUserName.value.defaultUserName
+    }
+    messages.value.push(new TextMessage("user", userName.value, getMessageTime()))
+    useIsNameChosen().value = true
+    // await sendBotMessage(1000)
+}
+
 
 const currentAnswers = computed<Answer[]>(() =>  currentQuestion.value.answers)
 
