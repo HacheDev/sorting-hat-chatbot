@@ -41,7 +41,9 @@
     justify-content: space-around;
     box-sizing: border-box;
     // margin: 10px;
-    padding: 0 10px;
+    padding: 10px 0 10px 10px;
+    height: 5%;
+    font-size: 1rem;
     .answer-selection   {
         width: 100%;
         display: flex;
@@ -61,26 +63,37 @@
             height: 30px;
             width: 15%;
             border-radius: 9999px;
+            font-size: inherit;
         }
     }
     .answers  {
         width: 100%;
         display: flex;
         flex-direction: column;
+        overflow-y: auto;
+        height: 20vh;
         // padding: 10px 30px;
         // justify-content: space-around;
         // margin: 0 10px;
         .answer {
-            display: flex;
+            display: inline-flex;
             flex: 1;
             min-width: 100%;
             width: fit-content;
             align-items: center;
             justify-content: center;
-            height: 30px;
+            height: auto;
             border-radius: 9999px;
-            font-size: 1.5rem;
             margin: 5px auto;
+            font-size: inherit;
+        }
+    }
+}
+
+@media @mobile  {
+    .answers-container  {
+        .answers   {
+            height: 30vh;
         }
     }
 }
@@ -94,12 +107,15 @@ import Answer from '~~/utils/classes/Answer';
 const { locale } = useI18n()
 
 const { pending, data: placeholders } = await useAsyncData(() =>   queryContent(locale.value + "/placeholders").findOne())
-
+// await sendNameQuestion(1000)
 const isAnswerEmpty = useIsAnswerEmpty()
 const selectedAnswer = useSelectedAnswer()
-// selectedAnswer.value = placeholders.value.answer
+selectedAnswer.value = placeholders.value.answer
 const questionsLoaded = useQuestionsLoaded()
+// const questionsList = useQuestionsList()
 const currentQuestion = useCurrentQuestion()
+// currentQuestion.value = questionsList.value[useQuestionNumber().value]
+
 const isNameChosen = useIsNameChosen()
 const userName = useUserName()
 

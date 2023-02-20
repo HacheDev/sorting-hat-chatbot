@@ -37,6 +37,7 @@
         border-radius: 9999px;
         // overflow: hidden;
         position: relative;
+        padding: 10px;
         .message-owner  {
             // background-color: @primary-color;
             padding: 5px 10px;

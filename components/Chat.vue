@@ -17,24 +17,30 @@
                 </TransitionGroup>
             </div>
         </div>
-        <AnswersCard></AnswersCard>
+        <AnswersCard class="answers-card"></AnswersCard>
     </div>
 </template>
 
 <style lang="less" scoped>
 .chat-container {
     height: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
     // max-height: 30%;
-    overflow-y: scroll;
+    // overflow-y: auto;
     .chat   {    
         display: flex;
         flex-direction: column-reverse;
-        max-height: 400px;
+        justify-content: flex-start;
+        // max-height: 400px;
         .chat-content {
             display: flex;
             flex-direction: column;
-            max-height: 10%;
+            // max-height: 10%;
+            height: 50vh;
             scroll-behavior: smooth;
+            overflow-y: auto;
             .message-enter-active,
             .message-leave-active   {
                 transition: all 1s ease;
@@ -47,24 +53,46 @@
             
         }
     }
+    .answers-card   {
+        justify-content: flex-end;
+    }
+}
+
+@media @mobile  {
+    .chat-container {
+        .chat {
+            .chat-content   {
+                // height: 60vh;
+            }
+        }
+    }
 }
 </style>
 
 <script lang="ts" setup>
 import { useQuestionsList } from "~~/composables/states";
+import TextMessage from "~~/utils/classes/TextMessage";
+import { getMessageTime } from "~~/utils/functions/getMessageTime";
 const { locale } = useI18n()
 
+const { data: nameQuestion } = await useAsyncData(() => queryContent(locale.value + "/name-question").findOne())
 const { pending, data: questions } = await useAsyncData(() =>   queryContent(locale.value + "/questions").findOne())
 const questionsList = useQuestionsList()
+const questionsLoaded = useQuestionsLoaded()
+questionsList.value = questions.value.body
 watch(questionsList, (newQuestions) =>  {
     questionsLoaded.value = true
 })
-questionsList.value = questions.value.body
+
 const questionNumber = useQuestionNumber()
 const messages = useMessages()
+const isBotTurn = useIsBotTurn()
 const currentQuestion = useCurrentQuestion()
-const questionsLoaded = useQuestionsLoaded()
 currentQuestion.value = useQuestionsList().value[useQuestionNumber().value]
+messages.value = [new TextMessage("bot", nameQuestion.value.title, getMessageTime())]
+isBotTurn.value = false
+// setTimeout(() =>    currentQuestion.value = useQuestionsList().value[useQuestionNumber().value]
+// , 1000)
 
 // const { pending, data: questions } = await useAsyncData("questions", async() =>  {
 //     const {pending,data:response} = await useAsyncData(() => queryContent(useState("localeState").value + "/questions").findOne())

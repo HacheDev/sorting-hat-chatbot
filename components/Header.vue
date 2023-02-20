@@ -10,17 +10,24 @@
 .main-header    {
     display: flex;
     background-color: @primary-color;
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     padding: 30px 0;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     color: white;
     text-transform: capitalize;
     z-index: 10;
+    height: 5vh;
     .main-title {
         margin: auto;
     }
 
+}
+
+@media @mobile  {
+    .main-header    {
+        display: none;
+    }
 }
 </style>
 

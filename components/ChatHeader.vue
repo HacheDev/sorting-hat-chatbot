@@ -20,6 +20,7 @@
     color: white;
     text-transform: capitalize;
     z-index: 20;
+    height: 5vh;
 
     &::after   {
         content: "";

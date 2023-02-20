@@ -21,5 +21,47 @@ export default class Scores implements ScoresInterface  {
         return this
     }
 
+    public getWinnerHouse(): string   {
+        const winner: number = this.getMaxScore()
+        let winnerHouse: string = ""
+        switch (winner) {
+            case this.g:
+                if (winnerHouse.length === 0) {
+                    winnerHouse += "Gryffindor"
+                } else {
+                    winnerHouse += " & Gr"
+                }
+
+            case this.r:
+                if (winnerHouse.length === 0) {
+                    winnerHouse += "Ravenclaw"
+                } else {
+                    winnerHouse += " & Ravenclaw"
+                }
+            
+            case this.h:
+                if (winnerHouse.length === 0) {
+                    winnerHouse += "Hufflepuff"
+                } else {
+                    winnerHouse += " & Hufflepuff"
+                }
+        
+            case this.s:
+                if (winnerHouse.length === 0) {
+                    winnerHouse += "Slytherin"
+                } else {
+                    winnerHouse += " & Slytherin"
+                }
+                break;
+            default:
+                break;
+        }
+        return winnerHouse
+    }
+
+    public getMaxScore(scores: Scores): number  {
+        return Math.max(this.g, this.r, this.h, this.s)
+    }
+
 
 }
