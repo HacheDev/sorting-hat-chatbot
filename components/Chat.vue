@@ -1,36 +1,49 @@
 <template>
-    <ChatHeader></ChatHeader>
     <div class="chat-container">
-        <div v-if="!messages">loading...</div>
-        <div v-else>
-            <TransitionGroup name="message">
-                <Message v-for="message in messages" :key="message.content" :isBotMessage="message.owner == 'bot'">
-                    <template #text>
-                        {{ message.content }}
-                    </template>
-                    <template #time>
-                        {{ message.time }}
-                    </template>
-                    
-                </Message>
-            </TransitionGroup>
+        <ChatHeader></ChatHeader>
+        <div class="chat">
+            <div class="chat-content" v-if="!messages">loading...</div>
+            <div class="chat-content" v-else>
+                <TransitionGroup name="message">
+                    <Message v-for="message in messages" :key="message.content" :isBotMessage="message.owner == 'bot'">
+                        <template #text>
+                            {{ message.content }}
+                        </template>
+                        <template #time>
+                            {{ message.time }}
+                        </template>
+                        
+                    </Message>
+                </TransitionGroup>
+            </div>
         </div>
+        <AnswersCard></AnswersCard>
     </div>
-    <AnswersCard></AnswersCard>
 </template>
 
 <style lang="less" scoped>
 .chat-container {
-    .message-enter-active,
-    .message-leave-active   {
-        transition: all 1s ease;
+    height: 100%;
+    overflow-y: scroll;
+    .chat   {    
+        display: flex;
+        flex-direction: column-reverse;
+        
+        .chat-content {
+            display: flex;
+            flex-direction: column;
+            .message-enter-active,
+            .message-leave-active   {
+                transition: all 1s ease;
+            }
+            .message-enter-from,
+            .message-leave-to {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            
+        }
     }
-    .message-enter-from,
-    .message-leave-to {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    
 }
 </style>
 

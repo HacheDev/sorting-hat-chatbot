@@ -9,37 +9,20 @@
 
 <script lang="ts" setup>
 import { ComputedRef } from '@vue/reactivity';
+import { selectAnswer, sendAnswer } from '~~/composables/functions';
 import Answer from '~~/utils/classes/Answer';
 import Question from '~~/utils/classes/Question';
 import TextMessage from '~~/utils/classes/TextMessage';
 import { getMessageTime } from '~~/utils/functions/getMessageTime';
 
-
-// const { pending, data: defaultAnswer } = await useAsyncData("defaultAnswer", () =>  queryContent(useCurrentLocale().value + "/default-answer").findOne())
-
 const isAnswerEmpty = useIsAnswerEmpty()
 const selectedAnswer = useSelectedAnswer()
 const questionsLoaded = useQuestionsLoaded()
 const questionsList = useQuestionsList()
-
-
 const questionNumber = useQuestionNumber()
+const currentQuestion = useCurrentQuestion()
+const messages = useMessages()
 
 const currentAnswers = computed<Answer[]>(() =>  currentQuestion.value.answers)
 
-const currentQuestion = useCurrentQuestion()
-
-const selectAnswer = (answer: Answer) => {
-    selectedAnswer.value = new Answer(answer.title, answer.scores)
-    isAnswerEmpty.value = false
-}
-const messages = useMessages()
-const sendAnswer = () => {
-    if(!isAnswerEmpty.value) {
-        messages.value.push(new TextMessage("user", selectedAnswer.value.title, getMessageTime()))
-        ++questionNumber.value
-        currentQuestion.value = questionsList.value[questionNumber.value]
-        isAnswerEmpty.value = true
-    }
-}
 </script>
