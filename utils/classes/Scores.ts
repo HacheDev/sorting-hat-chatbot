@@ -13,6 +13,11 @@ export default class Scores implements ScoresInterface  {
         this.s = s
     }
 
+    /**
+     * Add scores values to current Scores
+     * @param {Scores} newScores 
+     * @returns {Scores}
+     */
     public addScores(newScores: Scores): Scores {
         this.g += newScores.g
         this.r += newScores.r
@@ -21,45 +26,42 @@ export default class Scores implements ScoresInterface  {
         return this
     }
 
+    /**
+     * Returns name of house with the most points
+     * @returns {string}
+     */
     public getWinnerHouse(): string   {
         const winner: number = this.getMaxScore()
         let winnerHouse: string = ""
         switch (winner) {
             case this.g:
-                if (winnerHouse.length === 0) {
-                    winnerHouse += "Gryffindor"
-                } else {
-                    winnerHouse += " & Gr"
-                }
+                winnerHouse += "Gryffindor"
+                break;
 
             case this.r:
-                if (winnerHouse.length === 0) {
                     winnerHouse += "Ravenclaw"
-                } else {
-                    winnerHouse += " & Ravenclaw"
-                }
+                    break;
             
             case this.h:
-                if (winnerHouse.length === 0) {
                     winnerHouse += "Hufflepuff"
-                } else {
-                    winnerHouse += " & Hufflepuff"
-                }
+                    break;
+
         
             case this.s:
-                if (winnerHouse.length === 0) {
-                    winnerHouse += "Slytherin"
-                } else {
-                    winnerHouse += " & Slytherin"
-                }
+                winnerHouse += "Slytherin"
                 break;
+                
             default:
                 break;
         }
         return winnerHouse
     }
 
-    public getMaxScore(scores: Scores): number  {
+    /**
+     * Get maximum score
+     * @returns {number}
+     */
+    public getMaxScore(): number  {
         return Math.max(this.g, this.r, this.h, this.s)
     }
 

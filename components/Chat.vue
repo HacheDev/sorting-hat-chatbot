@@ -5,7 +5,12 @@
             <div class="chat-content" v-if="!messages">loading...</div>
             <div class="chat-content" v-else>
                 <TransitionGroup name="message">
-                    <Message v-for="message in messages" :key="message.content" :isBotMessage="message.owner == 'bot'">
+                    <Message 
+                        v-for="message in messages" 
+                        :key="message.content" 
+                        :isBotMessage="message.owner == 'bot'"
+                        :id="`message--${messageNumber}`"
+                        >
                         <template #text>
                             {{ message.content }}
                         </template>
@@ -50,6 +55,9 @@
                 opacity: 0;
                 transform: translateX(30px);
             }
+            .message-leave-active   {
+                position: absolute;
+            }
             
         }
     }
@@ -71,26 +79,34 @@
 
 <script lang="ts" setup>
 import { useQuestionsList } from "~~/composables/states";
-import TextMessage from "~~/utils/classes/TextMessage";
-import { getMessageTime } from "~~/utils/functions/getMessageTime";
-const { locale } = useI18n()
-
-const { data: nameQuestion } = await useAsyncData(() => queryContent(locale.value + "/name-question").findOne())
+const locale = useLocale()
 const { pending, data: questions } = await useAsyncData(() =>   queryContent(locale.value + "/questions").findOne())
 const questionsList = useQuestionsList()
 const questionsLoaded = useQuestionsLoaded()
-questionsList.value = questions.value.body
+const messages = useMessages()
+const messageNumber = useMessageNumber()
+
 watch(questionsList, (newQuestions) =>  {
     questionsLoaded.value = true
 })
+questionsList.value = questions.value.body
+// watch(messageNumber, (newMessageNumber) =>    {
+//     const messageElement = document.getElementById("message--" + newMessageNumber)
+//     if(messageElement)  {
+//         messageElement.scrollIntoView({behavior: "smooth"})
+//     }
+//     ++messageNumber.value
+// })
+sendNameQuestion(1000)
 
-const questionNumber = useQuestionNumber()
-const messages = useMessages()
-const isBotTurn = useIsBotTurn()
-const currentQuestion = useCurrentQuestion()
-currentQuestion.value = useQuestionsList().value[useQuestionNumber().value]
-messages.value = [new TextMessage("bot", nameQuestion.value.title, getMessageTime())]
-isBotTurn.value = false
+// const messageRefs = ref([])
+
+// onMounted(() => {
+//     const messageElement = document.getElementById(messageRefs.value[0])
+//     if(messageElement)  {
+//         messageElement.scrollIntoView({behavior: "smooth"})
+//     }
+// })
 // setTimeout(() =>    currentQuestion.value = useQuestionsList().value[useQuestionNumber().value]
 // , 1000)
 

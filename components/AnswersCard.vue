@@ -8,10 +8,12 @@
             <span class="selected-answer" v-if="!isAnswerEmpty && selectedAnswer.title">{{ selectedAnswer.title }}</span>
             <span class="selected-answer" v-else-if="!pending && isAnswerEmpty">{{ placeholders.answer }}</span>
             <!-- <span v-else-if="!pending && defaultAnswer">{{ defaultAnswer["title"] }}</span> -->
-            <button class="answer-submit" @click="sendAnswer()">send</button>
+            <button class="answer-submit" @click="sendAnswer()" @keypress.enter="sendAnswer()">send</button>
         </div>
         <div v-if="questionsLoaded && currentAnswers" class="answers">
-            <button class="answer" v-for="answer in currentAnswers" :key="answer.title" @click="selectAnswer(answer)">{{ answer.title }}</button>
+            <TransitionGroup name="answer">
+                <button class="answer" v-for="answer in currentAnswers" :key="answer.title" @click="selectAnswer(answer)">{{ answer.title }}</button>
+            </TransitionGroup>
         </div>
     </div>
 </template>
@@ -75,6 +77,18 @@
         // padding: 10px 30px;
         // justify-content: space-around;
         // margin: 0 10px;
+        .answer-enter-active,
+        .answer-leave-active   {
+            transition: all 1s ease;
+        }
+        .answer-enter-from,
+        .answer-leave-to {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        .answer-leave-active    {
+            position: absolute;
+        }
         .answer {
             display: inline-flex;
             flex: 1;
@@ -106,34 +120,17 @@ import Answer from '~~/utils/classes/Answer';
 import TextMessage from '~~/utils/classes/TextMessage';
 import { getMessageTime } from '~~/utils/functions/getMessageTime';
 
-const { locale } = useI18n()
-
-const { data: defaultUserName } = await useAsyncData("defaultUserName", () =>  queryContent(locale.value + "/chat-names").only(["defaultUserName"]).findOne())
-
+const locale = useLocale()
 const { pending, data: placeholders } = await useAsyncData(() =>   queryContent(locale.value + "/placeholders").findOne())
-// await sendNameQuestion(1000)
 const isAnswerEmpty = useIsAnswerEmpty()
+const isNameChosen = useIsNameChosen()
+const userName = useUserName()
 const selectedAnswer = useSelectedAnswer()
 selectedAnswer.value = placeholders.value.answer
 const questionsLoaded = useQuestionsLoaded()
 // const questionsList = useQuestionsList()
 const currentQuestion = useCurrentQuestion()
 // currentQuestion.value = questionsList.value[useQuestionNumber().value]
-
-const isNameChosen = useIsNameChosen()
-const userName = useUserName()
-
-const saveUserName = () =>   {
-    const messages = useMessages()
-    const userName = useUserName()
-    if(!userName.value)    {
-        userName.value = defaultUserName.value.defaultUserName
-    }
-    messages.value.push(new TextMessage("user", userName.value, getMessageTime()))
-    useIsNameChosen().value = true
-    // await sendBotMessage(1000)
-}
-
 
 const currentAnswers = computed<Answer[]>(() =>  currentQuestion.value.answers)
 

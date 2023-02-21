@@ -53,8 +53,7 @@
 </style>
 
 <script lang="ts" setup>
-const { locale } = useI18n()
-
+const locale = useLocale()
 const { pending, data: botName } = await useAsyncData("chatNames", () =>  queryContent(locale.value + "/chat-names").only(["bot"]).findOne())
 
 const botStatus = computed(():string => useIsBotTurn().value ? "writing..." : "online")

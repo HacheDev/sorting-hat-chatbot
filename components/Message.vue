@@ -37,7 +37,7 @@
         border-radius: 9999px;
         // overflow: hidden;
         position: relative;
-        padding: 10px;
+        padding: 20px;
         .message-owner  {
             // background-color: @primary-color;
             padding: 5px 10px;
@@ -110,6 +110,8 @@
 </style>
 
 <script setup lang="ts">
+import { measure } from '@intlify/shared';
+
 const props = defineProps({
     isBotMessage: { 
         type: Boolean,
@@ -118,10 +120,33 @@ const props = defineProps({
 })
 const messageType: string = props.isBotMessage ? "received" : "sent"
 
-const { locale } = useI18n()
-
+const locale = useLocale()
+const messageNumber = useMessageNumber()
 const { pending, data: chatNames } = await useAsyncData("chatNames", () =>  queryContent(locale.value + "/chat-names").findOne())
 const messageOwnerName: string = props.isBotMessage ? chatNames.value.bot : chatNames.value.user + " (" + useUserName().value + ")"
 
+const messageId = computed(() => "message--" + messageNumber.value)
+
+onMounted(() => {
+    const messageElement = document.getElementById(messageId.value)
+    
+    if(messageElement)  {
+        messageElement.scrollIntoView({behavior: "smooth"})
+        console.log(messageElement.id)
+    }
+})
+
+// const messageNumber = useState<number>("messageNumber", () => 0)
+// messageNumber.value++
+// onMounted(() => ++messageNumber.value)
+// const messageRef = useState("messageRef")
+// messageRef.value = "messageRef"
+
+// onMounted(() => {
+//     const messageElement = document.getElementById(messageRef.value)
+//     if(messageElement)  {
+//         messageElement.scrollIntoView({behavior: "smooth"})
+//     }
+// })
 
 </script>
