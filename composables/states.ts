@@ -8,7 +8,7 @@ export const useLocale = () => useState<string>("locale")
 export const useQuestionsLoaded = () => useState<boolean>("questionsLoaded", () => false)
 export const useQuestionsList = () => useState<Question[]>("questionsList")
 export const useQuestionNumber = () => useState<number>("questionNumber", () => 0)
-export const useMessageNumber = () =>   useState<number>("messageNumber", () => 0)
+export const useMessageNumber = () =>   useState<number>("messageNumber", () => -1)
 
 export const useCurrentQuestion = () => useState<Question>("currentQuestion")
 export const useMessages = () =>   useState<TextMessage[]>("textMessages")

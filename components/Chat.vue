@@ -6,10 +6,10 @@
             <div class="chat-content" v-else>
                 <TransitionGroup name="message">
                     <Message 
-                        v-for="message in messages" 
+                        v-for="(message, index) in messages" 
                         :key="message.content" 
                         :isBotMessage="message.owner == 'bot'"
-                        :id="`message--${messageNumber}`"
+                        :id="`message--${index}`"
                         >
                         <template #text>
                             {{ message.content }}
@@ -90,6 +90,9 @@ watch(questionsList, (newQuestions) =>  {
     questionsLoaded.value = true
 })
 questionsList.value = questions.value.body
+
+const messageId: string = "message--" + messageNumber.value
+
 // watch(messageNumber, (newMessageNumber) =>    {
 //     const messageElement = document.getElementById("message--" + newMessageNumber)
 //     if(messageElement)  {

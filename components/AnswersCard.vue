@@ -44,22 +44,31 @@
     box-sizing: border-box;
     // margin: 10px;
     padding: 10px 0 10px 10px;
-    height: 5%;
+    // height: 5%;
+    height: 30vh;
     font-size: 1rem;
     .answer-selection   {
         width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        height: auto;
         .selected-answer   {
             display: inline-flex;
             justify-content: space-around;
-            height: 30px;
+            // height: 30px;
             min-width: 80%;
             width: fit-content;
             text-align: center;
             border-radius: 9999px;
             border: 1px solid gray;
             align-items: center;
+            padding: 10px;
+            flex: 1;
+            // justify-content: center;
+            height: auto;
+            margin: 5px auto;
+            font-size: inherit;
         }
         .answer-submit  {
             height: 30px;
@@ -73,7 +82,7 @@
         display: flex;
         flex-direction: column;
         overflow-y: auto;
-        height: 20vh;
+        height: 25vh;
         // padding: 10px 30px;
         // justify-content: space-around;
         // margin: 0 10px;

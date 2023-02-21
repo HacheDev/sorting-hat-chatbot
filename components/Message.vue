@@ -18,10 +18,13 @@
 @import "@/assets/less/mixins.less";
 
 .message-row    {
-    display: flex;
+    display: inline-flex;
     margin: auto;
     align-items: center;
     margin: 10px;
+    // scroll-margin-top: 20px;
+    // scroll-margin-bottom: 20px;
+
     .user-icon  {
         max-width: 4rem;
         max-height: 4rem;
@@ -125,14 +128,18 @@ const messageNumber = useMessageNumber()
 const { pending, data: chatNames } = await useAsyncData("chatNames", () =>  queryContent(locale.value + "/chat-names").findOne())
 const messageOwnerName: string = props.isBotMessage ? chatNames.value.bot : chatNames.value.user + " (" + useUserName().value + ")"
 
-const messageId = computed(() => "message--" + messageNumber.value)
 
 onMounted(() => {
-    const messageElement = document.getElementById(messageId.value)
+    const messageId: string = "message--" + messageNumber.value
+
+    const messageElement = document.getElementById(messageId)
+    // console.log(messageId)
     
     if(messageElement)  {
         messageElement.scrollIntoView({behavior: "smooth"})
         console.log(messageElement.id)
+        console.log(messageId)
+        console.log(messageNumber.value)
     }
 })
 
