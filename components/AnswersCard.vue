@@ -39,6 +39,7 @@
         width: 90%;
         text-align: center;
         font-size: inherit;
+        background-color: @send-color;
     }
     .name-button    {
         border-radius: 9999px;
@@ -76,6 +77,7 @@
         height: auto;
         .selected-answer   {
             display: inline-flex;
+            background-color: @send-color;
             justify-content: space-around;
             width: 90%;
             text-align: center;
