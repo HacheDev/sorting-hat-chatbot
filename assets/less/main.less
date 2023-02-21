@@ -1,9 +1,38 @@
 @import "@/assets/less/variables.less";
 @import "@/assets/less/mixins.less";
+@import "@/assets/fontawesome/less/fontawesome.less";
 
-body.custom-body  {
+body  {
   margin: 0;
   background-color: @secondary-color;
   color: white;
   height: 90%;
+}
+
+body, input, button  {
+  font-family: 'DumbledorItalic';
+}
+
+@font-face {
+  font-family: 'Dumbledor';
+  src: url('/assets/fonts/dum1/dum1.ttf'); /* IE9 Compat Modes */
+  src: url('/assets/fonts/dum1/dum1.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'DumbledorItalic';
+  src: url('/assets/fonts/dum1/dum1ital.ttf'); /* IE9 Compat Modes */
+  src: url('/assets/fonts/dum1/dum1ital.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'Dumbledor3D';
+  src: url('/assets/fonts/dum1/dum13d.ttf'); /* IE9 Compat Modes */
+  src: url('/assets/fonts/dum1/dum13d.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'DumbledorOutline';
+  src: url('/assets/fonts/dum1/dum1out.ttf'); /* IE9 Compat Modes */
+  src: url('/assets/fonts/dum1/dum1out.ttf')  format('truetype'); /* Safari, Android, iOS */
 }

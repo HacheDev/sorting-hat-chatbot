@@ -22,8 +22,6 @@
     margin: auto;
     align-items: center;
     margin: 10px;
-    // scroll-margin-top: 20px;
-    // scroll-margin-bottom: 20px;
 
     .user-icon  {
         max-width: 4rem;
@@ -34,31 +32,24 @@
         display: flex;
         flex-direction: column;
         border: 1px solid white;
-        // border-bottom: 1px solid white;
-        // border-right: 1px solid white;
-        // border-left: 1px solid white;
         border-radius: 9999px;
-        // overflow: hidden;
         position: relative;
         padding: 20px;
         .message-owner  {
-            // background-color: @primary-color;
             padding: 5px 10px;
             margin: 0;
-            // border-top-left-radius: 10%;
-            // border-top-right-radius: 10%;
-            // border-top: 1px solid white;
-            // border-right: 1px solid white;
-            // border-left: 1px solid white;
+            // font-family: 'DumbledorOutline';
+            font-family: 'DumbledorItalic';
+            font-size: 1.75rem;
         }
         .message-content    {
             padding: 5px 10px;
-            // border: 1px solid white;
-            // border-bottom-left-radius: 10%;
-            // border-bottom-right-radius: 10%;
+            font-size: 1.5rem;
+            
             .message-time   {
                 margin-top: 5px;
-                font-size: 0.75rem;
+                font-size: 1rem;
+                font-family: 'DumbledorItalic';
             }
         }
     }
@@ -110,10 +101,17 @@
     }
 
 }
+
+@media @mobile  {
+    .message-row    {
+        .message    {
+            padding: 14.65%;
+        }
+    }
+}
 </style>
 
 <script setup lang="ts">
-import { measure } from '@intlify/shared';
 
 const props = defineProps({
     isBotMessage: { 
@@ -121,39 +119,12 @@ const props = defineProps({
         required: true
     }
 })
+
 const messageType: string = props.isBotMessage ? "received" : "sent"
 
 const locale = useLocale()
 const messageNumber = useMessageNumber()
 const { pending, data: chatNames } = await useAsyncData("chatNames", () =>  queryContent(locale.value + "/chat-names").findOne())
 const messageOwnerName: string = props.isBotMessage ? chatNames.value.bot : chatNames.value.user + " (" + useUserName().value + ")"
-
-
-onMounted(() => {
-    const messageId: string = "message--" + messageNumber.value
-
-    const messageElement = document.getElementById(messageId)
-    // console.log(messageId)
-    
-    if(messageElement)  {
-        messageElement.scrollIntoView({behavior: "smooth"})
-        console.log(messageElement.id)
-        console.log(messageId)
-        console.log(messageNumber.value)
-    }
-})
-
-// const messageNumber = useState<number>("messageNumber", () => 0)
-// messageNumber.value++
-// onMounted(() => ++messageNumber.value)
-// const messageRef = useState("messageRef")
-// messageRef.value = "messageRef"
-
-// onMounted(() => {
-//     const messageElement = document.getElementById(messageRef.value)
-//     if(messageElement)  {
-//         messageElement.scrollIntoView({behavior: "smooth"})
-//     }
-// })
 
 </script>
