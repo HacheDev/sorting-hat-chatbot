@@ -38,7 +38,7 @@
 <style lang="less" scoped>
 .name-input-container   {
     position: fixed;
-    bottom: 0;
+    bottom: 5vh;
     display: flex;
     width: 100%;
     font-size: 1.5rem;
@@ -163,10 +163,24 @@
 }
 
 @media @mobile  {
+    .name-input-container   {
+        bottom: 0;
+    }
     .answers-container  {
+        bottom: 0;
         .answers   {
             height: 30vh;
         }
+    }
+}
+
+@media @desktop {
+    .name-input-container   {
+        bottom: 5vh;
+    }
+
+    .answers-container  {
+        bottom: 5vh;
     }
 }
 </style>

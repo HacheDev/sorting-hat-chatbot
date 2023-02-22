@@ -45,7 +45,7 @@
             height: 50vh;
             scroll-behavior: smooth;
             overflow-y: scroll;
-            padding-bottom: 20px;
+            padding-bottom: 50px;
             .message-enter-active,
             .message-leave-active   {
                 transition: all 1s ease;
