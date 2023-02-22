@@ -1,6 +1,6 @@
 <template>
     <header class="chat-header">
-        <nuxt-img class="chat-header-bot-icon" src="/sorting-hat.jpg"></nuxt-img>
+        <nuxt-img class="chat-header-bot-icon" src="/images/sorting-hat.jpg"></nuxt-img>
         <div class="chat-header-info">
             <h2 v-if="!pending && chatInfo" class="chat-header-title">{{ chatInfo.bot }}</h2>
             <h3 class="bot-status">{{ botStatus }}</h3>

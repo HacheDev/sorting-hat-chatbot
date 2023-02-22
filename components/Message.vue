@@ -1,6 +1,6 @@
 <template>
     <div class="message-row" :class="messageType">
-        <nuxt-img class="user-icon" v-if="props.isBotMessage == true" src="/sorting-hat.jpg"></nuxt-img>
+        <nuxt-img class="user-icon" v-if="props.isBotMessage == true" src="/images/sorting-hat.jpg"></nuxt-img>
         <div class="message">
             <h3 class="message-owner">{{ messageOwnerName }}</h3>
             <div class="message-content">
