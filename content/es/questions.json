@@ -1,6 +1,6 @@
 [
   {
-    "title": "¿Amanecer o al atardecer?",
+    "title": "¿Amanecer o anochecer?",
     "answers": [
       {
         "title": "Amanecer",
@@ -12,7 +12,7 @@
         }
       },
       {
-        "title": "Oscuridad",
+        "title": "Anochecer",
         "scores": {
           "g": 0,
           "r": 0,
@@ -69,7 +69,7 @@
     ]
   },
   {
-    "title": "¿Cuál de los siguientes odiarías más que la gente te llame?",
+    "title": "¿Cuál de los siguientes odiarías más que te llamase la gente?",
     "answers": [
       {
         "title": "Común",
@@ -90,7 +90,7 @@
         }
       },
       {
-        "title": "Cobardemente",
+        "title": "Cobarde",
         "scores": {
           "g": 100,
           "r": 0,
@@ -110,10 +110,10 @@
     ]
   },
   {
-    "title": "Después de que hayas muerto, ¿qué es lo que más te gustaría que hicieran las personas cuando escuchan tu nombre?",
+    "title": "Después de que hayas muerto, ¿qué es lo que más te gustaría que hicieran las personas cuando escucharan tu nombre?",
     "answers": [
       {
-        "title": "Te extraño, pero sonríe",
+        "title": "Echarte de menos, pero sonriendo",
         "scores": {
           "g": 0,
           "r": 0,
@@ -122,7 +122,7 @@
         }
       },
       {
-        "title": "Pide más historias sobre tus aventuras",
+        "title": "Pedir más historias sobre tus aventuras",
         "scores": {
           "g": 100,
           "r": 0,
@@ -131,7 +131,7 @@
         }
       },
       {
-        "title": "Piensa con admiración en tus logros",
+        "title": "Pensar en tus logros con admiración",
         "scores": {
           "g": 0,
           "r": 100,
@@ -172,7 +172,7 @@
         }
       },
       {
-        "title": "El gran",
+        "title": "El grande",
         "scores": {
           "g": 0,
           "r": 0,
@@ -195,7 +195,7 @@
     "title": "Dada la elección, ¿preferirías inventar una poción que te garantice:",
     "answers": [
       {
-        "title": "¿Amar?",
+        "title": "¿Amor?",
         "scores": {
           "g": 0,
           "r": 0,
@@ -233,7 +233,7 @@
     ]
   },
   {
-    "title": "Una vez cada siglo, el arbusto Flutterby produce flores que adaptan su aroma para atraer a los incautos. ",
+    "title": "Una vez cada siglo, el arbusto Flutterby produce flores que adaptan su aroma para atraer a los incautos. Si te atrajese, olería a:",
     "answers": [
       {
         "title": "Una chimenea crepitante",
@@ -254,7 +254,7 @@
         }
       },
       {
-        "title": "pergamino fresco",
+        "title": "Pergamino fresco",
         "scores": {
           "g": 0,
           "r": 100,
@@ -345,7 +345,7 @@
         }
       },
       {
-        "title": "el tambor",
+        "title": "El tambor",
         "scores": {
           "g": 100,
           "r": 0,
@@ -427,7 +427,7 @@
         }
       },
       {
-        "title": "La pequeña caja de peltre, sencilla y sin pretensiones, con un mensaje rayado que dice \"Solo abro para los dignos\".",
+        "title": "La pequeña caja de peltre, sencilla y sin pretensiones, con un mensaje rayado que dice \"Solo me abro para los dignos\".",
         "scores": {
           "g": 100,
           "r": 0,
@@ -441,7 +441,7 @@
     "title": "Un troll se ha vuelto loco en el estudio del director en Hogwarts. ",
     "answers": [
       {
-        "title": "Primero, una cura casi perfecta para la viruela del dragón. ",
+        "title": "Primero, una cura casi perfecta para la viruela del dragón. Después, registros de estudiantes que se remontan a 1000 años. Finalmente, un misterioso libro escrito a mano lleno de runas.",
         "scores": {
           "g": 100,
           "r": 0,
@@ -450,7 +450,7 @@
         }
       },
       {
-        "title": "Primero, registros de estudiantes que se remontan a 1000 años. ",
+        "title": "Primero, registros de estudiantes que se remontan a 1000 años. Después, un misterioso libro escrito a mano lleno de runas. Finalmente, una cura casi perfecta para la viruela del dragón.",
         "scores": {
           "g": 0,
           "r": 0,
@@ -459,7 +459,7 @@
         }
       },
       {
-        "title": "Primero, un misterioso libro escrito a mano lleno de extrañas runas. ",
+        "title": "Primero, un misterioso libro escrito a mano lleno de extrañas runas. Después, una cura casi perfecta para la viruela del dragón. Finalmente, registros de estudiantes que se remontan a 1000 años.",
         "scores": {
           "g": 0,
           "r": 100,
@@ -468,7 +468,7 @@
         }
       },
       {
-        "title": "Primero, una cura casi perfecta para la viruela del dragón. ",
+        "title": "Primero, una cura casi perfecta para la viruela del dragón. Después, un misterioso libro escrito a mano lleno de extrañas runas. Finalmente, registros de estudiantes que se remontan a 1000 años.",
         "scores": {
           "g": 100,
           "r": 0,
@@ -477,7 +477,7 @@
         }
       },
       {
-        "title": "Primeros registros de estudiantes que se remontan a 1000 años. ",
+        "title": "Primero, registros de estudiantes que se remontan a 1000 años. Después, una cura casi perfecta para la viruela del dragón. Finalmente, un misterioso libro escrito a mano lleno de extrañas runas.",
         "scores": {
           "g": 0,
           "r": 0,
@@ -486,7 +486,7 @@
         }
       },
       {
-        "title": "Primero, un misterioso libro escrito a mano lleno de extrañas runas. ",
+        "title": "Primero, un misterioso libro escrito a mano lleno de extrañas runas. Después, registros de estudiantes que se remontan a 1000 años. Finalmente, una cura casi perfecta para la viruela del dragón.",
         "scores": {
           "g": 0,
           "r": 100,
@@ -550,7 +550,7 @@
     "title": "Cuál preferirías ser:",
     "answers": [
       {
-        "title": "envidiado?",
+        "title": "¿Envidiado?",
         "scores": {
           "g": 0,
           "r": 100,
@@ -595,7 +595,7 @@
         }
       },
       {
-        "title": "temido?",
+        "title": "¿Temido?",
         "scores": {
           "g": 0,
           "r": 0,
@@ -686,7 +686,7 @@
         }
       },
       {
-        "title": "Volando en una escoba",
+        "title": "Volar en una escoba",
         "scores": {
           "g": 100,
           "r": 0,
@@ -813,7 +813,7 @@
         }
       },
       {
-        "title": "¿Sugiere hacer un sorteo para decidir cuál de ustedes peleará?",
+        "title": "¿Sugieres hacer un sorteo para decidir cuál de ustedes peleará?",
         "scores": {
           "g": 0,
           "r": 0,
@@ -854,7 +854,7 @@
         }
       },
       {
-        "title": "Dígale al profesor Flitwick que debería preguntarle a su compañero de clase (y resuelva decirle a su compañero de clase que si él no dice la verdad, usted lo hará).",
+        "title": "Dígale al profesor Flitwick que debería preguntarle a su compañero de clase (y decides decirle a su compañero de clase que si él no dice la verdad, usted lo hará).",
         "scores": {
           "g": 100,
           "r": 0,
@@ -872,7 +872,7 @@
         }
       },
       {
-        "title": "No esperaría a que le pidieran que le dijera la verdad al profesor Flitwick. ",
+        "title": "No esperarías a que te pidieran que le dijeras la verdad al profesor Flitwick. ",
         "scores": {
           "g": 0,
           "r": 0,
@@ -1036,7 +1036,7 @@
         }
       },
       {
-        "title": "Retirarse a las sombras para esperar los desarrollos, mientras revisa mentalmente los hechizos defensivos y ofensivos más apropiados, en caso de que surjan problemas.",
+        "title": "Retirarse a las sombras para esperar al desarrollo, mientras revisas mentalmente los hechizos defensivos y ofensivos más apropiados, en caso de que surjan problemas.",
         "scores": {
           "g": 0,
           "r": 100,
@@ -1059,7 +1059,7 @@
         }
       },
       {
-        "title": "gato siames",
+        "title": "Gato siames",
         "scores": {
           "g": 25,
           "r": 0,
@@ -1086,7 +1086,7 @@
         }
       },
       {
-        "title": "gato blanco",
+        "title": "Gato blanco",
         "scores": {
           "g": 25,
           "r": 0,
@@ -1210,10 +1210,10 @@
     ]
   },
   {
-    "title": "¿Cara o corona?",
+    "title": "¿Cara o cruz?",
     "answers": [
       {
-        "title": "cabezas",
+        "title": "Cara",
         "scores": {
           "g": 0,
           "r": 100,
@@ -1245,7 +1245,7 @@
         }
       },
       {
-        "title": "Bien",
+        "title": "Derecha",
         "scores": {
           "g": 100,
           "r": 0,
