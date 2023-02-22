@@ -1,25 +1,35 @@
 <template>
     <div v-if="!isNameChosen" class="name-input-container">
         <input class="name-input" v-if="!pending" v-model="userName" type="text" :placeholder="placeholders.name" @keypress.enter="saveUserName()" tabindex="1" >
-        <button class="name-button" @click="saveUserName()" @keypress.enter="saveUserName()">
+        <button class="name-submit" @click="saveUserName()" @keypress.enter="saveUserName()">
             <i class="fa-solid fa-circle-chevron-right"></i>
         </button>
     </div>
     <div v-else class="answers-container">
         <div class="answer-selection">
-            <span class="selected-answer" v-if="!isAnswerEmpty && selectedAnswer.title">{{ selectedAnswer.title }}</span>
-            <span class="selected-answer" v-else-if="!pending && isAnswerEmpty">{{ placeholders.answer }}</span>
+            <span class="selected-answer" 
+                v-if="!isAnswerEmpty && selectedAnswer.title"
+                >{{ selectedAnswer.title }}
+            </span>
+            <span class="selected-answer"
+                v-else-if="!pending && isAnswerEmpty"
+                >{{ placeholders.answer }}
+            </span>
             <button class="answer-submit" 
                 @click="sendAnswer()" 
-                @keypress.enter="sendAnswer()"
             >
                 <i class="fa-solid fa-circle-chevron-right"></i>
 
             </button>
         </div>
-        <div v-if="questionsLoaded && currentAnswers" class="answers">
+        <div v-if="questionsLoaded && currentAnswers && numOfMessages > 2" class="answers">
             <TransitionGroup name="answer">
-                <button class="answer" v-for="answer in currentAnswers" :key="answer.title" @click="selectAnswer(answer)">{{ answer.title }}</button>
+                <button class="answer" 
+                    v-for="answer in currentAnswers" 
+                    :key="answer.title" 
+                    @click="selectAnswer(answer)"
+                >{{ answer.title }}
+                </button>
             </TransitionGroup>
         </div>
     </div>
@@ -32,29 +42,29 @@
     font-size: 1.5rem;
     justify-content: space-around;
     align-items: center;
-    height: auto;
+    // height: calc(100% - 55vh);
+    background-color: @primary-color;
     .name-input {
         border-radius: 9999px;
         height: 30px;
         width: 90%;
         text-align: center;
         font-size: inherit;
-        background-color: @send-color;
     }
-    .name-button    {
+    .name-submit    {
         border-radius: 9999px;
         width: 5%;
         height: fit-content;
         cursor: pointer;
         background-color: transparent;
         border: none;
-        color: white;
+        color: @submit-color;
         .fa-solid  {
             background-color: transparent;
             &::before   {
                 background-color: transparent;
-                font-size: 4rem;
-                line-height: 45px;
+                font-size: 6rem;
+                line-height: 70px;
             }
         }
     }
@@ -67,8 +77,9 @@
     justify-content: space-around;
     box-sizing: border-box;
     padding: 10px 0 10px 10px;
-    height: calc(100% - 55vh);
+    // height: calc(100% - 55vh);
     font-size: 1.5rem;
+    background-color: @primary-color;
     .answer-selection   {
         width: 100%;
         display: flex;
@@ -77,9 +88,10 @@
         height: auto;
         .selected-answer   {
             display: inline-flex;
-            background-color: @send-color;
+            color: black;
+            background-color: white;
             justify-content: space-around;
-            width: 90%;
+            width: 80vw;
             text-align: center;
             border-radius: 9999px;
             border: 1px solid gray;
@@ -92,18 +104,18 @@
         }
         .answer-submit  {
             height: fit-content;
-            width: 5%;
+            width: calc(100% - 80vw);
             border-radius: 9999px;
             cursor: pointer;
             background-color: transparent;
             border: none;
-            color: white;
+            color: @submit-color;
             .fa-solid  {
                 background-color: transparent;
                 &::before   {
                     background-color: transparent;
-                    font-size: 4rem;
-                    line-height: 45px;
+                    font-size: 6rem;
+                    line-height: 70px;
                 }
             }
         }
@@ -138,6 +150,10 @@
             margin: 5px auto;
             font-size: inherit;
             cursor: pointer;
+            &:hover  {
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                transform: translateY(-5px);
+            }
         }
     }
 }
@@ -156,8 +172,8 @@ import { selectAnswer, sendAnswer, saveUserName } from '~~/composables/functions
 import { useIsNameChosen, useUserName } from '~~/composables/states';
 import Answer from '~~/utils/classes/Answer';
 
-const locale = useLocale()
-const { pending, data: placeholders } = await useAsyncData(() =>   queryContent(locale.value + "/placeholders").findOne())
+const currentLocale = useLocale()
+const { pending, data: placeholders } = await useAsyncData(() =>   queryContent(currentLocale.value + "/placeholders").findOne())
 const isAnswerEmpty = useIsAnswerEmpty()
 const isNameChosen = useIsNameChosen()
 const userName = useUserName()
@@ -168,5 +184,5 @@ const currentQuestion = useCurrentQuestion()
 
 //compute current answer from current question
 const currentAnswers = computed<Answer[]>(() =>  currentQuestion.value.answers)
-
+const numOfMessages = computed<number>(() => useMessages().value.length)
 </script>

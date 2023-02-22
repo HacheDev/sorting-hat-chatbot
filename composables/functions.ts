@@ -21,8 +21,8 @@ export const selectAnswer = (answer: Answer) => {
  * @returns {Promise}
  */
 export const sendNameQuestion = async(duration: number): Promise<unknown> =>  {
-    const locale = useLocale()
-    const { data: nameQuestion } = await useAsyncData(() => queryContent(locale.value + "/name-question").findOne())
+    const currentLocale = useLocale()
+    const { data: nameQuestion } = await useAsyncData(() => queryContent(currentLocale.value + "/name-question").findOne())
     const messages = useMessages()
     const isBotTurn = useIsBotTurn()
     const currentQuestion = useCurrentQuestion()
@@ -105,11 +105,11 @@ export const sendResult = async(duration: number): Promise<unknown> =>  {
     const messages = useMessages()
     const totalScores = useTotalScores()
     const userName = useUserName()
-    const locale = useLocale()
+    const currentLocale = useLocale()
     const isBotTurn = useIsBotTurn()
     const messageNumber = useMessageNumber()
 
-    const { data: resultsMessage } = await useAsyncData(() => queryContent(locale.value + "/results-message").findOne())
+    const { data: resultsMessage } = await useAsyncData(() => queryContent(currentLocale.value + "/results-message").findOne())
     const result: string = resultsMessage.value.greeting + userName.value + ", " + resultsMessage.value.assigned + totalScores.value.getWinnerHouse() + resultsMessage.value.score + totalScores.value.getMaxScore() + resultsMessage.value.points
     let totalResults: string = resultsMessage.value.totalScores + "\n" + "Gryffindor: " + totalScores.value.g + resultsMessage.value.points + "\n" + "Hufflepuff: " + totalScores.value.h + resultsMessage.value.points + "\n" + "Ravenclaw: " + totalScores.value.r + resultsMessage.value.points + "\n" + "Slytherin: " + totalScores.value.s + resultsMessage.value.points
     
@@ -126,12 +126,12 @@ export const sendResult = async(duration: number): Promise<unknown> =>  {
  * Async function for saving user name
  */
 export const saveUserName = async() =>   {
-    const locale = useLocale()
+    const currentLocale = useLocale()
     const messageNumber = useMessageNumber()
     const messages = useMessages()
     const userName = useUserName()
 
-    const { data: defaultUserName } = await useAsyncData("defaultUserName", () =>  queryContent(locale.value + "/chat-names").only(["defaultUserName"]).findOne())
+    const { data: defaultUserName } = await useAsyncData("defaultUserName", () =>  queryContent(currentLocale.value + "/chat-info").only(["defaultUserName"]).findOne())
 
 
     if(!userName.value)    {

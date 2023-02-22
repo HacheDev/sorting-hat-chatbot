@@ -79,8 +79,8 @@
 import { useQuestionsList } from "~~/composables/states";
 import { scrollToMessage } from '~~/composables/functions';
 
-const locale = useLocale()
-const { pending, data: questions } = await useAsyncData(() =>   queryContent(locale.value + "/questions").findOne())
+const currentLocale = useLocale()
+const { pending, data: questions } = await useAsyncData(() =>   queryContent(currentLocale.value + "/questions").findOne())
 const questionsList = useQuestionsList()
 const questionsLoaded = useQuestionsLoaded()
 const messages = useMessages()
