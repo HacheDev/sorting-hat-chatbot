@@ -13,7 +13,7 @@
 .chat-header    {
     position: relative;
     display: flex;
-    background-color: @primary-color;
+    background-color: @darkest-navy-blue;
     padding: 30px 0;
     align-items: center;
     justify-content: flex-start;
@@ -38,11 +38,16 @@
     }
     .chat-header-info    {
         display: grid;
-        
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+        // white-space: nowrap;
+        width: 70vw;
         .chat-header-title {
             margin: 0;
-            // font-family: 'Dumbledor3D';
             font-size: 3rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .bot-status {
             margin: 0;
@@ -59,12 +64,21 @@
         }
         .chat-header-info   {
             padding-left: 20px;
+            width: 50vw;
             .chat-header-title  {
                 font-size: 2rem;
             }
             .bot-status {
                 font-size: 1.5rem;
             }
+        }
+    }
+}
+
+@media @tablet  {
+    .chat-header    {
+        .chat-header-bot-icon   {
+            display: none;
         }
     }
 }

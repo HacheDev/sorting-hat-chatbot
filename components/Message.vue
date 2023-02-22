@@ -55,7 +55,7 @@
     &.received  {
         justify-content: flex-start;
         .message    {
-            background-color: @bot-message-color;
+            background-color: @dark-navy-blue;
             margin-left: 40px;
             .message-content    {
                 .message-text   {
@@ -79,7 +79,7 @@
         justify-content: flex-end;
         .message    {
             margin-right: 40px;
-            background-color: @user-message-color;
+            background-color: @navy-blue;
             .message-content    {
                 .message-text   {
                 

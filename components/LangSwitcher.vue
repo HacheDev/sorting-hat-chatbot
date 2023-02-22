@@ -1,7 +1,8 @@
 <template>
     <div class="dropdown-container">
-        <button class="dropdown-button icon icon-circle-down">
-            {{ currentLocale }}
+        <button class="dropdown-button">
+            <i class="icon icon-circle-down"></i>
+            <span class="dropdown-text">{{ currentLocale }}</span>
         </button>
         <div class="dropdown-lang-content">
             <a
@@ -20,29 +21,32 @@
     position: absolute;
     display: inline-block;
     right: 5vw;
+    border-radius: 9999px;
     &:hover {
-        background-color: #ddd;
         .dropdown-lang-content  {
             display: block;
-        }
-        .dropdown-button    {
-            background-color: @submit-color;
         }
     }
     .dropdown-button    {
         display: flex;
         align-items: center;
-        background-color: @submit-color;
+        background-color: @light-blue;
         color: white;
         padding: 16px;
         font-size: 16px;
         border: none;
-        font-size: 2rem;
-        &.icon::before   {
+        border-radius: 9999px;
+        &:hover {
+            background-color: @navy-blue;
+        }
+        .icon::before   {
             font-size: 3rem;
             padding-right: 15px;
             margin-right: 15px;
-            border-right: 1px solid @primary-color;
+            border-right: 1px solid @darkest-navy-blue;
+        }
+        .dropdown-text  {
+            font-size: 2rem;
         }
     }
     .dropdown-lang-content  {
@@ -53,7 +57,7 @@
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 2;
         &:hover {
-            background-color: #ddd;
+            background-color: @light-blue;
         }
         .dropdown-link  {
             color: black;

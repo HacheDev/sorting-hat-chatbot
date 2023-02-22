@@ -48,7 +48,7 @@
     justify-content: space-around;
     align-content: center;
     align-items: center;
-    background-color: @primary-color;
+    background-color: @darkest-navy-blue;
     .name-input {
         border-radius: 9999px;
         height: auto;
@@ -64,7 +64,7 @@
         font-size: 2rem;
         height: auto;
         cursor: pointer;
-        background-color: @submit-color;
+        background-color: @light-blue;
         border: none;
         color: white;
         .icon  {
@@ -88,7 +88,7 @@
     align-content: center;
     align-items: center;
     font-size: 1.5rem;
-    background-color: @primary-color;
+    background-color: @darkest-navy-blue;
     .answer-selection   {
         display: flex;
         justify-content: space-around;
@@ -120,7 +120,7 @@
             height: fit-content;
             border-radius: 9999px;
             cursor: pointer;
-            background-color: @submit-color;
+            background-color: @light-blue;
             border: none;
             color: white;
             .icon  {
@@ -165,7 +165,7 @@
             &:hover  {
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
                 transform: translateY(-5px);
-                background-color: @submit-color;
+                background-color: @light-blue;
             }
         }
     }

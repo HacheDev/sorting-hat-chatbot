@@ -5,7 +5,8 @@
         <button v-if="!pending" 
             class="restart-button"
             @click="restartChat()"
-        >{{ placeholders.restart }}
+        ><i class="icon icon-loop2"></i>
+            {{ placeholders.restart }}
         </button>
     </div>
 </template>
@@ -21,7 +22,7 @@
     justify-content: center;
     align-items: center;
     min-height: 30vh;
-    background-color: @primary-color;
+    background-color: @darkest-navy-blue;
     &.gryffindor    {
         background-color: @red-gryffindor;
     }
@@ -35,14 +36,18 @@
         background-color: @green-slytherin;
     }
     .restart-button {
-        width: 33%;
+        display: flex;
         font-size: 2rem;
         border-radius: 9999px;
         text-transform: uppercase;
         &:hover {
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             transform: translateY(-5px);
-            background-color: @submit-color;
+            background-color: @light-blue;
+        }
+
+        .icon   {
+            padding-right: 15px;
         }
     }
     .result {
