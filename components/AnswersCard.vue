@@ -72,14 +72,14 @@
 
 .answers-container  {
     position: fixed;
-    bottom: 0;
+    bottom: 5vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-content: center;
     align-items: center;
-    padding: 10px 0 10px 10px;
+    // padding: 10px 0 10px 10px;
     font-size: 1.5rem;
     background-color: @primary-color;
     .answer-selection   {
@@ -168,19 +168,24 @@
     }
     .answers-container  {
         bottom: 0;
-        .answers   {
-            height: 30vh;
-        }
     }
 }
 
-@media @desktop {
+@media @tablet  {
     .name-input-container   {
-        bottom: 5vh;
+        bottom: 0;
     }
-
     .answers-container  {
-        bottom: 5vh;
+        bottom: 0;
+    }
+}
+
+@media @laptop  {
+    .name-input-container   {
+        bottom: 0;
+    }
+    .answers-container  {
+        bottom: 0;
     }
 }
 </style>
