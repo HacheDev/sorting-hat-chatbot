@@ -1,4 +1,5 @@
 import Answer from "~~/utils/classes/Answer"
+import Scores from "~~/utils/classes/Scores"
 import TextMessage from "~~/utils/classes/TextMessage"
 import { getMessageTime } from "~~/utils/functions/getMessageTime"
 import { useIsNameChosen, useLocale, useTotalScores } from "./states"
@@ -9,9 +10,11 @@ import { useIsNameChosen, useLocale, useTotalScores } from "./states"
  */
 export const selectAnswer = (answer: Answer) => {
     const isBotTurn = useIsBotTurn()
+    const selectedAnswer = useSelectedAnswer()
+    const isAnswerEmpty = useIsAnswerEmpty()
     if(!isBotTurn.value) {
-        useSelectedAnswer().value = new Answer(answer.title, answer.scores)
-        useIsAnswerEmpty().value = false
+        selectedAnswer.value = new Answer(answer.title, answer.scores)
+        isAnswerEmpty.value = false
     }
 }
 
@@ -96,6 +99,46 @@ export const sendBotMessage = async(duration: number): Promise<unknown> => {
     }, duration))
 }
 
+
+/**
+ * 
+ * @returns {Promise<string>} Promise that returns winner house and max score
+ */
+export const getResult = async(): Promise<string> => {
+    const currentLocale = useLocale()
+    const userName = useUserName()
+    const totalScores = useTotalScores()
+
+    const { data: resultsMessage } = await useAsyncData(() => queryContent(currentLocale.value + "/results-message").findOne())
+
+    const result: string = resultsMessage.value.greeting + userName.value + ", " 
+        + resultsMessage.value.assigned + totalScores.value.getWinnerHouse() 
+        + resultsMessage.value.score + totalScores.value.getMaxScore() 
+        + resultsMessage.value.points
+
+    return result
+}
+
+/**
+ * 
+ * @returns {Promise<string>} Promise that returns full results
+ */
+export const getTotalResults = async(): Promise<string> =>    {
+    const currentLocale = useLocale()
+    const userName = useUserName()
+    const totalScores = useTotalScores()
+
+    const { data: resultsMessage } = await useAsyncData(() => queryContent(currentLocale.value + "/results-message").findOne())
+
+    const totalResults: string = resultsMessage.value.totalScores 
+        + "\n" + "Gryffindor: " + totalScores.value.g + resultsMessage.value.points 
+        + "\n" + "Hufflepuff: " + totalScores.value.h + resultsMessage.value.points 
+        + "\n" + "Ravenclaw: " + totalScores.value.r + resultsMessage.value.points 
+        + "\n" + "Slytherin: " + totalScores.value.s + resultsMessage.value.points
+
+    return totalResults
+}
+
 /**
  * Async function for sending message with the results
  * @param {number} duration 
@@ -103,15 +146,13 @@ export const sendBotMessage = async(duration: number): Promise<unknown> => {
  */
 export const sendResult = async(duration: number): Promise<unknown> =>  {
     const messages = useMessages()
-    const totalScores = useTotalScores()
-    const userName = useUserName()
-    const currentLocale = useLocale()
     const isBotTurn = useIsBotTurn()
     const messageNumber = useMessageNumber()
 
     const { data: resultsMessage } = await useAsyncData(() => queryContent(currentLocale.value + "/results-message").findOne())
-    const result: string = resultsMessage.value.greeting + userName.value + ", " + resultsMessage.value.assigned + totalScores.value.getWinnerHouse() + resultsMessage.value.score + totalScores.value.getMaxScore() + resultsMessage.value.points
-    let totalResults: string = resultsMessage.value.totalScores + "\n" + "Gryffindor: " + totalScores.value.g + resultsMessage.value.points + "\n" + "Hufflepuff: " + totalScores.value.h + resultsMessage.value.points + "\n" + "Ravenclaw: " + totalScores.value.r + resultsMessage.value.points + "\n" + "Slytherin: " + totalScores.value.s + resultsMessage.value.points
+    const result: string = await getResult()
+        
+    let totalResults: string = await getTotalResults()
     
     return new Promise(() => setTimeout(() =>   {
 
@@ -154,4 +195,25 @@ export const scrollToMessage = () =>   {
     if(messageElement)  {
         messageElement.scrollIntoView({behavior: "smooth"})
     }
+}
+
+/**
+ * Function for restarting quiz and scores
+ */
+export const restartChat = async() =>    {
+    const questionNumber = useQuestionNumber()
+    const messageNumber = useMessageNumber()
+    const isNameChosen = useIsNameChosen()
+    const userName = useUserName()
+    const totalScores = useTotalScores()
+    const messages = useMessages()
+
+    questionNumber.value = 0
+    messageNumber.value = -1
+    isNameChosen.value = false
+    userName.value = ""
+    totalScores.value = new Scores(0, 0, 0, 0)
+    messages.value = []
+
+    await sendNameQuestion(1000)
 }

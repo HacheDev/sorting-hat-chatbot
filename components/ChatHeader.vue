@@ -6,8 +6,6 @@
             <h3 class="bot-status">{{ botStatus }}</h3>
         </div>
         <LangSwitcher></LangSwitcher>
-        
-        <!-- <nuxt-link :to="availableLocales[0]">{{ availableLocales[0] }}</nuxt-link> -->
     </header>
 </template>
 
@@ -16,13 +14,11 @@
     position: relative;
     display: flex;
     background-color: @primary-color;
-    // font-size: 2.5rem;
     padding: 30px 0;
     align-items: center;
     justify-content: flex-start;
     color: white;
     text-transform: capitalize;
-    // z-index: 20;
     height: 5vh;
 
     &::after   {
@@ -64,7 +60,10 @@
         .chat-header-info   {
             padding-left: 20px;
             .chat-header-title  {
-                
+                font-size: 2rem;
+            }
+            .bot-status {
+                font-size: 1.5rem;
             }
         }
     }
@@ -73,11 +72,11 @@
 </style>
 
 <script lang="ts" setup>
-
+// load info of the header
 const currentLocale = useLocale()
-
 const { pending, data: chatInfo } = await useAsyncData("chatInfo", () =>  queryContent(currentLocale.value + "/chat-info").findOne())
 
+// computed value from isBotTurn state
 const botStatus = computed(():string => useIsBotTurn().value ? chatInfo.value.writing : chatInfo.value.online)
 
 </script>

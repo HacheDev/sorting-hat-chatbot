@@ -35,20 +35,20 @@ export default class Scores implements ScoresInterface  {
         let winnerHouse: string = ""
         switch (winner) {
             case this.g:
-                winnerHouse += "Gryffindor"
+                winnerHouse = "Gryffindor"
                 break;
 
             case this.r:
-                    winnerHouse += "Ravenclaw"
+                    winnerHouse = "Ravenclaw"
                     break;
             
             case this.h:
-                    winnerHouse += "Hufflepuff"
+                    winnerHouse = "Hufflepuff"
                     break;
 
         
             case this.s:
-                winnerHouse += "Slytherin"
+                winnerHouse = "Slytherin"
                 break;
                 
             default:

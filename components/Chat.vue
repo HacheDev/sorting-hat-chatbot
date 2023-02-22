@@ -24,6 +24,7 @@
             </div>
         </div>
         <AnswersCard v-if="!hasFinished"></AnswersCard>
+        <ResultsCard v-else></ResultsCard>
     </div>
 </template>
 
@@ -33,20 +34,18 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    // max-height: 30%;
-    // overflow-y: auto;
     .chat   {    
         display: flex;
         flex-direction: column-reverse;
         justify-content: flex-start;
-        // max-height: 400px;
+        height: 55vh;
         .chat-content {
             display: flex;
             flex-direction: column;
-            // max-height: 10%;
             height: 50vh;
             scroll-behavior: smooth;
-            overflow-y: auto;
+            overflow-y: scroll;
+            padding-bottom: 20px;
             .message-enter-active,
             .message-leave-active   {
                 transition: all 1s ease;
@@ -67,8 +66,9 @@
 @media @mobile  {
     .chat-container {
         .chat {
+            height: 45vh;
             .chat-content   {
-                // height: 60vh;
+                padding-bottom: 0;
             }
         }
     }
@@ -79,6 +79,7 @@
 import { useQuestionsList } from "~~/composables/states";
 import { scrollToMessage } from '~~/composables/functions';
 
+// load questions from content module with correct lang
 const currentLocale = useLocale()
 const { pending, data: questions } = await useAsyncData(() =>   queryContent(currentLocale.value + "/questions").findOne())
 const questionsList = useQuestionsList()
@@ -86,14 +87,19 @@ const questionsLoaded = useQuestionsLoaded()
 const messages = useMessages()
 const questionNumber = useQuestionNumber()
 
+// create a watcher over questionList state
+// when questionsList has been assigned a value
+// questionsLoaded state becomes true
 watch(questionsList, (newQuestions) =>  {
     questionsLoaded.value = true
 })
+// assign a value to questionsList state
 questionsList.value = questions.value.body
 
+// start chatting
 sendNameQuestion(1500)
 
-
+// check if all questions have been answered
 const hasFinished = computed<boolean>(() => questionsList.value.length <= questionNumber.value)
 
     

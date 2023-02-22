@@ -8,7 +8,6 @@
                 <span class="message-time">
                     <slot name="time"></slot>
                 </span>
-                <!-- <span>{{ currentQuestion }}</span> -->
             </div>
         </div>
     </div>
@@ -35,10 +34,10 @@
         border-radius: 9999px;
         position: relative;
         padding: 20px;
+        box-shadow: 10px 10px rgba(0, 0, 0, 0.342);
         .message-owner  {
             padding: 5px 10px;
             margin: 0;
-            // font-family: 'DumbledorOutline';
             font-family: 'DumbledorItalic';
             font-size: 1.75rem;
         }
@@ -113,6 +112,7 @@
 
 <script setup lang="ts">
 
+// prop to know owner of message
 const props = defineProps({
     isBotMessage: { 
         type: Boolean,
@@ -120,11 +120,12 @@ const props = defineProps({
     }
 })
 
+// const to add to message class
 const messageType: string = props.isBotMessage ? "received" : "sent"
 
+// load chat names
 const currentLocale = useLocale()
-const messageNumber = useMessageNumber()
-const { pending, data: chatNames } = await useAsyncData("chatNames", () =>  queryContent(currentLocale.value + "/chat-info").findOne())
+const { data: chatNames } = await useAsyncData("chatNames", () =>  queryContent(currentLocale.value + "/chat-info").findOne())
 const messageOwnerName: string = props.isBotMessage ? chatNames.value.bot : chatNames.value.user + " (" + useUserName().value + ")"
 
 </script>
