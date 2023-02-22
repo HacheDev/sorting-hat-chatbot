@@ -4,7 +4,8 @@
         <button class="name-submit" 
             @click="saveUserName()" 
             @keypress.enter="saveUserName()"
-        ><i class="icon icon-circle-right"></i>{{ placeholders.send }}
+        ><i class="icon icon-circle-right"></i>
+        <span class="submit-button-text">{{ placeholders.send }}</span>
         </button>
     </div>
     <div v-else class="answers-container">
@@ -19,7 +20,9 @@
             </span>
             <button class="answer-submit" 
                 @click="sendAnswer()" 
-            ><i class="icon icon-circle-right"></i>{{ placeholders.send }}
+            >
+                <i class="icon icon-circle-right"></i>
+                <span class="submit-button-text">{{ placeholders.send }}</span>
             </button>
         </div>
         <div v-if="questionsLoaded && currentAnswers && numOfMessages > 2" class="answers">
@@ -43,6 +46,7 @@
     width: 100%;
     font-size: 1.5rem;
     justify-content: space-around;
+    align-content: center;
     align-items: center;
     background-color: @primary-color;
     .name-input {
@@ -68,6 +72,7 @@
                 font-size: 3rem;
                 border-top-left-radius: 9999px;
                 border-bottom-left-radius: 9999px;
+                padding-right: 15px;
             }
         }
     }
@@ -82,7 +87,6 @@
     justify-content: space-around;
     align-content: center;
     align-items: center;
-    // padding: 10px 0 10px 10px;
     font-size: 1.5rem;
     background-color: @primary-color;
     .answer-selection   {
@@ -123,7 +127,6 @@
                 &::before   {
                     background-color: transparent;
                     font-size: 3rem;
-                    // line-height: 70px;
                 }
             }
         }
@@ -163,6 +166,27 @@
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
                 transform: translateY(-5px);
                 background-color: @submit-color;
+            }
+        }
+    }
+}
+
+@media @mobile  {
+    .name-input-container   {
+        .name-submit    {
+            .icon::before   {
+                padding-right: 0;
+            }
+            .submit-button-text {
+                display: none;
+            }
+        }
+    }
+
+    .answers-container  {
+        .answer-submit  {
+            .submit-button-text {
+                display: none;
             }
         }
     }

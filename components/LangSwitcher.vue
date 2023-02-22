@@ -40,6 +40,9 @@
         font-size: 2rem;
         &.icon::before   {
             font-size: 3rem;
+            padding-right: 15px;
+            margin-right: 15px;
+            border-right: 1px solid @primary-color;
         }
     }
     .dropdown-lang-content  {
@@ -59,6 +62,17 @@
             display: block;
             font-size: 2rem;
             text-transform: none;
+        }
+    }
+}
+
+@media @mobile  {
+    .dropdown-container {
+        .dropdown-button    {
+            font-size: 1rem;
+            &.icon::before  {
+                font-size: 1.5rem;
+            }   
         }
     }
 }
