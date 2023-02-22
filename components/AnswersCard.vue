@@ -38,7 +38,7 @@
 <style lang="less" scoped>
 .name-input-container   {
     position: fixed;
-    bottom: 5vh;
+    bottom: 0;
     display: flex;
     width: 100%;
     font-size: 1.5rem;
@@ -72,7 +72,7 @@
 
 .answers-container  {
     position: fixed;
-    bottom: 5vh;
+    bottom: 0;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -159,33 +159,6 @@
                 background-color: @submit-color;
             }
         }
-    }
-}
-
-@media @mobile  {
-    .name-input-container   {
-        bottom: 0;
-    }
-    .answers-container  {
-        bottom: 0;
-    }
-}
-
-@media @tablet  {
-    .name-input-container   {
-        bottom: 0;
-    }
-    .answers-container  {
-        bottom: 0;
-    }
-}
-
-@media @laptop  {
-    .name-input-container   {
-        bottom: 0;
-    }
-    .answers-container  {
-        bottom: 0;
     }
 }
 </style>
