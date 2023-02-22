@@ -5,7 +5,7 @@
             <div class="chat-content" v-if="!messages"></div>
             <div class="chat-content" v-else>
                 <TransitionGroup name="message" 
-                @enter="scrollToMessage()" @after-enter="scrollToMessage()">
+                @enter="scrollToMessage()">
                     <Message 
                         v-for="(message, index) in messages" 
                         :key="message.content" 
@@ -54,7 +54,7 @@
             .message-enter-from,
             .message-leave-to {
                 opacity: 0;
-                transform: translateX(30px);
+                transform: translateY(30px);
             }
             .message-leave-active   {
                 position: absolute;

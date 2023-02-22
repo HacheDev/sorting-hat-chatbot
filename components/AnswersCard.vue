@@ -67,7 +67,7 @@
     justify-content: space-around;
     box-sizing: border-box;
     padding: 10px 0 10px 10px;
-    height: 30vh;
+    height: calc(100% - 55vh);
     font-size: 1.5rem;
     .answer-selection   {
         width: 100%;

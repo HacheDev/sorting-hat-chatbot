@@ -5,6 +5,17 @@
             <h2 v-if="!pending && botName" class="chat-header-title">{{ botName.bot }}</h2>
             <h3 class="bot-status">{{ botStatus }}</h3>
         </div>
+        <select class="lang-switcher">
+            <option
+                v-for="locale in locales"
+                :key="locale.toString()"
+            >
+                <nuxt-link :to="switchLocalePath(locale.toString())">
+                    {{ locale.toString() }}
+                </nuxt-link>
+            </option>
+        </select>
+        <nuxt-link :to="switchLocalePath('es')"></nuxt-link>
     </header>
 </template>
 
@@ -51,16 +62,27 @@
             font-size: 2rem;
         }
     }
+    .lang-switcher  {
+        width: 5vw  ;
+    }
     
 }
 
 </style>
 
 <script lang="ts" setup>
-const locale = useLocale()
-const { pending, data: botName } = await useAsyncData("chatNames", () =>  queryContent(locale.value + "/chat-names").only(["bot"]).findOne())
+
+const { locales } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
+// console.log(switchLocalePath("en"))
+// console.log(t)
+// console.log(locales.value[0])
+const currentLocale = useLocale()
+// console.log(currentLocale.value)
+
+const { pending, data: botName } = await useAsyncData("chatNames", () =>  queryContent(currentLocale.value + "/chat-names").only(["bot"]).findOne())
 
 const botStatus = computed(():string => useIsBotTurn().value ? "writing..." : "online")
-
+// const availableLocales = computed((): string[] => locales.value.filter((i: string) => i.toString() !== currentLocale.value))
 
 </script>
