@@ -62,7 +62,6 @@ export const sendAnswer = async() => {
         
         messages.value.push(new TextMessage("user", selectedAnswer.value.title, getMessageTime()))
         totalScores.value.addScores(selectedAnswer.value.scores)
-        console.log(totalScores.value.g)
         ++questionNumber.value
         ++messageNumber.value
    
