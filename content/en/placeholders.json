@@ -1,5 +1,6 @@
 {
     "answer": "Select an answer below",
     "name": "Write your name",
-    "restart": "restart"
+    "restart": "restart",
+    "send": "send"
 }

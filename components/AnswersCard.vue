@@ -1,8 +1,10 @@
 <template>
     <div v-if="!isNameChosen" class="name-input-container">
         <input class="name-input" v-if="!pending" v-model="userName" type="text" :placeholder="placeholders.name" @keypress.enter="saveUserName()" tabindex="1" >
-        <button class="name-submit" @click="saveUserName()" @keypress.enter="saveUserName()">
-            <i class="fa-solid fa-circle-chevron-right"></i>
+        <button class="name-submit" 
+            @click="saveUserName()" 
+            @keypress.enter="saveUserName()"
+        ><i class="icon icon-circle-right"></i>{{ placeholders.send }}
         </button>
     </div>
     <div v-else class="answers-container">
@@ -17,9 +19,7 @@
             </span>
             <button class="answer-submit" 
                 @click="sendAnswer()" 
-            >
-                <i class="fa-solid fa-circle-chevron-right"></i>
-
+            ><i class="icon icon-circle-right"></i>{{ placeholders.send }}
             </button>
         </div>
         <div v-if="questionsLoaded && currentAnswers && numOfMessages > 2" class="answers">
@@ -53,18 +53,21 @@
         width: 80vw;
     }
     .name-submit    {
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
         border-radius: 9999px;
+        font-size: 2rem;
         height: auto;
         cursor: pointer;
-        background-color: transparent;
+        background-color: @submit-color;
         border: none;
-        color: @submit-color;
-        .fa-solid  {
-            background-color: transparent;
+        color: white;
+        .icon  {
             &::before   {
-                background-color: transparent;
-                font-size: 6rem;
-                line-height: 70px;
+                font-size: 3rem;
+                border-top-left-radius: 9999px;
+                border-bottom-left-radius: 9999px;
             }
         }
     }
@@ -106,18 +109,21 @@
             font-size: inherit;
         }
         .answer-submit  {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            text-transform: capitalize;
             height: fit-content;
             border-radius: 9999px;
             cursor: pointer;
-            background-color: transparent;
+            background-color: @submit-color;
             border: none;
-            color: @submit-color;
-            .fa-solid  {
-                background-color: transparent;
+            color: white;
+            .icon  {
                 &::before   {
                     background-color: transparent;
-                    font-size: 6rem;
-                    line-height: 70px;
+                    font-size: 3rem;
+                    // line-height: 70px;
                 }
             }
         }

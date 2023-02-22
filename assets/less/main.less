@@ -1,7 +1,5 @@
 @import "@/assets/less/variables.less";
 @import "@/assets/less/mixins.less";
-@import "@/assets/fontawesome/less/fontawesome.less";
-@import "@/assets/fontawesome/less/solid.less";
 
 body  {
   margin: 0;
@@ -38,3 +36,67 @@ body, input, button  {
   src: url('/assets/fonts/dum1/dum1out.ttf'); /* IE9 Compat Modes */
   src: url('/assets/fonts/dum1/dum1out.ttf')  format('truetype'); /* Safari, Android, iOS */
 }
+
+@font-face {
+  font-family: '@{icomoon-font-family}';
+  src:  url('@{icomoon-font-path}/@{icomoon-font-family}.eot?yb7thw');
+  src:  url('@{icomoon-font-path}/@{icomoon-font-family}.eot?yb7thw#iefix') format('embedded-opentype'),
+    url('@{icomoon-font-path}/@{icomoon-font-family}.ttf?yb7thw') format('truetype'),
+    url('@{icomoon-font-path}/@{icomoon-font-family}.woff?yb7thw') format('woff'),
+    url('@{icomoon-font-path}/@{icomoon-font-family}.svg?yb7thw#@{icomoon-font-family}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '@{icomoon-font-family}' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-spinner11 {
+  &:before {
+    content: @icon-spinner11; 
+  }
+}
+.icon-loop2 {
+  &:before {
+    content: @icon-loop2; 
+  }
+}
+.icon-arrow-right2 {
+  &:before {
+    content: @icon-arrow-right2; 
+  }
+}
+.icon-arrow-down2 {
+  &:before {
+    content: @icon-arrow-down2; 
+  }
+}
+.icon-circle-right {
+  &:before {
+    content: @icon-circle-right; 
+  }
+}
+.icon-circle-down {
+  &:before {
+    content: @icon-circle-down; 
+  }
+}
+.icon-github {
+  &:before {
+    content: @icon-github; 
+  }
+}
+

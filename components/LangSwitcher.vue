@@ -1,7 +1,6 @@
 <template>
     <div class="dropdown-container">
-        <button class="dropdown-button">
-            <i class="fa-solid fa-sort-down"></i>
+        <button class="dropdown-button icon icon-circle-down">
             {{ currentLocale }}
         </button>
         <div class="dropdown-lang-content">
@@ -31,14 +30,15 @@
         }
     }
     .dropdown-button    {
-        display: inline-block;
+        display: flex;
+        align-items: center;
         background-color: @submit-color;
         color: white;
         padding: 16px;
         font-size: 16px;
         border: none;
         font-size: 2rem;
-        .fa-solid   {
+        &.icon::before   {
             font-size: 3rem;
         }
     }
