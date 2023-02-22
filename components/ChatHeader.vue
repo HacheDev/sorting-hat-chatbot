@@ -41,7 +41,7 @@
         
         .chat-header-title {
             margin: 0;
-            font-family: 'Dumbledor3D';
+            // font-family: 'Dumbledor3D';
             font-size: 3rem;
         }
         .bot-status {
