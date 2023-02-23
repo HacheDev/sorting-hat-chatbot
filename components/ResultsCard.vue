@@ -40,12 +40,12 @@
         font-size: 2rem;
         border-radius: 9999px;
         text-transform: uppercase;
+        box-shadow: 5px 5px 0px 2px rgba(0,0,0,0.75);
         &:hover {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            transform: translateY(-5px);
             background-color: @light-blue;
+            transform: translateX(5px) translateY(5px);
+            box-shadow: none;
         }
-
         .icon   {
             padding-right: 15px;
         }
