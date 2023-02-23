@@ -70,10 +70,6 @@ export const sendAnswer = async() => {
         } else {
             await sendBotMessage(1500)
         }
-        // setTimeout(() =>    {
-            // currentQuestion.value = questionsList.value[questionNumber.value]
-            // messages.value.push(new TextMessage("bot", currentQuestion.value.title, getMessageTime()))
-        // },5000)
     }
 }
 
