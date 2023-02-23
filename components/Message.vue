@@ -103,6 +103,16 @@
 
 @media @mobile  {
     .message-row    {
+        &.received  {
+            .message    {
+                margin-left: 15px;
+            }
+        }
+        &.send  {
+            .message    {
+                margin-right: 15px;
+            }
+        }
         .message    {
             padding: 14.65%;
         }
