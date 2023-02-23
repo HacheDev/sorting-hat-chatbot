@@ -22,7 +22,9 @@
     display: inline-block;
     right: 5vw;
     border-radius: 9999px;
+    cursor: pointer;
     &:hover {
+        
         .dropdown-lang-content  {
             display: block;
         }
@@ -36,6 +38,8 @@
         font-size: 16px;
         border: none;
         border-radius: 9999px;
+        transition: all 2s ease;
+        cursor: pointer;
         &:hover {
             background-color: @navy-blue;
         }
@@ -56,6 +60,7 @@
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 2;
+        transition: all 2s ease;
         &:hover {
             background-color: @light-blue;
         }

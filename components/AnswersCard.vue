@@ -1,44 +1,63 @@
 <template>
-    <div v-if="!isNameChosen" class="name-input-container">
-        <input class="name-input" v-if="!pending" v-model="userName" type="text" :placeholder="placeholders.name" @keypress.enter="saveUserName()" tabindex="1" >
-        <button class="name-submit" 
-            @click="saveUserName()" 
-            @keypress.enter="saveUserName()"
-        ><i class="icon icon-circle-right"></i>
-        <span class="submit-button-text">{{ placeholders.send }}</span>
-        </button>
-    </div>
-    <div v-else class="answers-container">
-        <div class="answer-selection">
-            <span class="selected-answer" 
-                v-if="!isAnswerEmpty && selectedAnswer.title"
-                >{{ selectedAnswer.title }}
-            </span>
-            <span class="selected-answer"
-                v-else-if="!pending && isAnswerEmpty"
-                >{{ placeholders.answer }}
-            </span>
-            <button class="answer-submit" 
-                @click="sendAnswer()" 
-            >
-                <i class="icon icon-circle-right"></i>
+    <Transition name="answers-card">
+        <div v-if="!isNameChosen" class="name-input-container">
+            <!-- <Transition name="name-container"> -->
+                    <input class="name-input" v-if="!pending" v-model="userName" type="text" :placeholder="placeholders.name" @keypress.enter="saveUserName()" tabindex="1" >
+                <button class="name-submit" 
+                    @click="saveUserName()" 
+                    @keypress.enter="saveUserName()"
+                ><i class="icon icon-circle-right"></i>
                 <span class="submit-button-text">{{ placeholders.send }}</span>
-            </button>
-        </div>
-        <div v-if="questionsLoaded && currentAnswers && numOfMessages > 2" class="answers">
-            <TransitionGroup name="answer">
-                <button class="answer" 
-                    v-for="answer in currentAnswers" 
-                    :key="answer.title" 
-                    @click="selectAnswer(answer)"
-                >{{ answer.title }}
                 </button>
-            </TransitionGroup>
+            <!-- </Transition> -->
         </div>
-    </div>
+        
+        <div v-else class="answers-container">
+            <div class="answer-selection">
+                    <span class="selected-answer" 
+                        v-if="!isAnswerEmpty && selectedAnswer.title"
+                        >{{ selectedAnswer.title }}
+                    </span>
+                    <span class="selected-answer"
+                        v-else-if="!pending && isAnswerEmpty"
+                        >{{ placeholders.answer }}
+                    </span>
+                <button class="answer-submit" 
+                    @click="sendAnswer()" 
+                >
+                    <i class="icon icon-circle-right"></i>
+                    <span class="submit-button-text">{{ placeholders.send }}</span>
+                </button>
+            </div>
+            <Transition name="answers">
+                <div v-if="questionsLoaded && currentAnswers && numOfMessages > 2" class="answers">
+                    <TransitionGroup name="answer">
+                        <button class="answer" 
+                            v-for="answer in currentAnswers" 
+                            :key="answer.title" 
+                            @click="selectAnswer(answer)"
+                        >{{ answer.title }}
+                        </button>
+                    </TransitionGroup>
+                </div>
+            </Transition>
+        </div>
+    </Transition>
 </template>
 
 <style lang="less" scoped>
+.answers-card-enter-active,
+.answers-card-leave-active   {
+    transition: all 1s ease;
+}
+.answers-card-enter-from,
+.answers-card-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+}
+.answers-card-leave-active    {
+    position: absolute;
+}
 .name-input-container   {
     position: fixed;
     bottom: 0;
@@ -49,6 +68,18 @@
     align-content: center;
     align-items: center;
     background-color: @darkest-navy-blue;
+    .name-container-enter-active,
+    .name-container-leave-active   {
+        transition: all 1s ease;
+    }
+    .name-container-enter-from,
+    .name-container-leave-to {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    .name-container-leave-active    {
+        position: absolute;
+    }
     .name-input {
         border-radius: 9999px;
         height: auto;
@@ -67,6 +98,14 @@
         background-color: @light-blue;
         border: none;
         color: white;
+        padding-left: 0;
+        transition: all 1s ease;
+        box-shadow: 5px 5px 0px 2px rgba(0,0,0,0.75);
+        &:hover {
+            background-color: @navy-blue;
+            transform: translateX(5px) translateY(5px);
+            box-shadow: none;
+        }
         .icon  {
             &::before   {
                 font-size: 3rem;
@@ -123,6 +162,14 @@
             background-color: @light-blue;
             border: none;
             color: white;
+            transition: all 1s ease;
+            padding-left: 0;
+            box-shadow: 5px 5px 0px 2px rgba(0,0,0,0.75);
+            &:hover {
+                background-color: @navy-blue;
+                transform: translateX(5px) translateY(5px);
+                box-shadow: none;
+            }
             .icon  {
                 &::before   {
                     background-color: transparent;
@@ -162,18 +209,34 @@
             margin: 5px auto;
             font-size: inherit;
             cursor: pointer;
-            &:hover  {
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-                transform: translateY(-5px);
+            transition: all 1s ease-in;
+            box-shadow: 5px 5px 0px 2px rgba(0,0,0,0.75);
+            &:hover {
                 background-color: @light-blue;
+                transform: translateX(5px) translateY(5px);
+                box-shadow: none;
             }
         }
+    }
+    .answers-enter-active,
+    .answers-leave-active   {
+        transition: all 1s ease;
+    }
+    .answers-enter-from,
+    .answers-leave-to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    .answers-leave-active    {
+        position: absolute;
     }
 }
 
 @media @mobile  {
     .name-input-container   {
         .name-submit    {
+            width: 48px;
+            padding: 0;
             .icon::before   {
                 padding-right: 0;
             }
@@ -185,6 +248,8 @@
 
     .answers-container  {
         .answer-submit  {
+            width: 48px;
+            padding: 0;
             .submit-button-text {
                 display: none;
             }

@@ -23,8 +23,10 @@
                 </TransitionGroup>
             </div>
         </div>
-        <AnswersCard v-if="!hasFinished"></AnswersCard>
-        <ResultsCard v-else></ResultsCard>
+        <Transition name="card">
+            <AnswersCard v-if="!hasFinished"></AnswersCard>
+            <ResultsCard v-else></ResultsCard>
+        </Transition>
     </div>
 </template>
 
@@ -61,6 +63,19 @@
             
         }
     }
+}
+
+.card-enter-active,
+.card-leave-active   {
+    transition: all 1s ease;
+}
+.card-enter-from,
+.card-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+}
+.card-leave-active    {
+    position: absolute;
 }
 
 @media @mobile  {
