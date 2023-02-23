@@ -40,6 +40,7 @@
         font-size: 2rem;
         border-radius: 9999px;
         text-transform: uppercase;
+        transition: all 1s ease-in;
         box-shadow: 5px 5px 0px 2px rgba(0,0,0,0.75);
         &:hover {
             background-color: @light-blue;
