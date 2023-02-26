@@ -15,6 +15,7 @@ export const selectAnswer = (answer: Answer) => {
     if(!isBotTurn.value) {
         selectedAnswer.value = new Answer(answer.title, answer.scores)
         isAnswerEmpty.value = false
+        document.getElementById("selected-answer")?.focus()
     }
 }
 
@@ -47,6 +48,7 @@ export const sendNameQuestion = async(duration: number): Promise<unknown> =>  {
 export const sendAnswer = async() => {
     const isAnswerEmpty = useIsAnswerEmpty()
     const isBotTurn = useIsBotTurn()
+    const selectedAnswer = useSelectedAnswer()
     
     if(!isAnswerEmpty.value && !isBotTurn.value) {
         isAnswerEmpty.value = true
@@ -62,6 +64,7 @@ export const sendAnswer = async() => {
         
         messages.value.push(new TextMessage("user", selectedAnswer.value.title, getMessageTime()))
         totalScores.value.addScores(selectedAnswer.value.scores)
+        selectedAnswer.value.title = ""
         ++questionNumber.value
         ++messageNumber.value
    

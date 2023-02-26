@@ -2,10 +2,9 @@
     <Transition name="answers-card">
         <div v-if="!isNameChosen" class="name-input-container">
             <!-- <Transition name="name-container"> -->
-                    <input class="name-input" v-if="!pending" v-model="userName" type="text" :placeholder="placeholders.name" @keypress.enter="saveUserName()" tabindex="1" >
+                <input class="name-input" v-if="!pending" v-model="userName" type="text" :placeholder="placeholders.name" @keypress.enter="saveUserName()" tabindex="1" >
                 <button class="name-submit" 
                     @click="saveUserName()" 
-                    @keypress.enter="saveUserName()"
                 ><i class="icon icon-circle-right"></i>
                 <span class="submit-button-text">{{ placeholders.send }}</span>
                 </button>
@@ -14,15 +13,8 @@
         
         <div v-else class="answers-container">
             <div class="answer-selection">
-                    <span class="selected-answer" 
-                        v-if="!isAnswerEmpty && selectedAnswer.title"
-                        >{{ selectedAnswer.title }}
-                    </span>
-                    <span class="selected-answer"
-                        v-else-if="!pending && isAnswerEmpty"
-                        >{{ placeholders.answer }}
-                    </span>
-                <button class="answer-submit" 
+                <input v-if="!pending" id="selected-answer" class="selected-answer" v-model="selectedAnswer.title" type="text" :placeholder="placeholders.answer" @keypress.enter="sendAnswer()" tabindex="1" readonly>
+                <button id="answer-submit" class="answer-submit" 
                     @click="sendAnswer()" 
                 >
                     <i class="icon icon-circle-right"></i>

@@ -13,7 +13,6 @@ export default defineNuxtConfig({
     },
     modules:    [
         '@nuxt/content',
-        '@nuxt/image-edge',
         '@nuxtjs/i18n'
     ],
     i18n: {    
