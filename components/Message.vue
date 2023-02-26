@@ -2,7 +2,7 @@
     <div class="message-row" :class="messageType">
         <img class="user-icon" v-if="props.isBotMessage == true" src="/images/sorting-hat.jpg">
         <div class="message">
-            <h3 v-if="!pending" class="message-owner">{{ messageOwnerName }}</h3>
+            <h3 class="message-owner">{{ messageOwnerName }}</h3>
             <div class="message-content">
                 <slot name="text" class="message-text"></slot>
                 <span class="message-time">
@@ -135,7 +135,7 @@ const messageType: string = props.isBotMessage ? "received" : "sent"
 
 // load chat names
 const currentLocale = useLocale()
-const { pending, data: chatNames } = await useAsyncData("chatNames", () =>  queryContent(currentLocale.value + "/chat-info").findOne())
+const { data: chatNames } = await useAsyncData("chatNames", () =>  queryContent(currentLocale.value + "/chat-info").findOne())
 const messageOwnerName: string = props.isBotMessage ? chatNames.value.bot : chatNames.value.user + " (" + useUserName().value + ")"
 
 </script>
