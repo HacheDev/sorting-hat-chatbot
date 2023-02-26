@@ -145,6 +145,7 @@ export const getTotalResults = async(): Promise<string> =>    {
 export const sendResult = async(duration: number): Promise<unknown> =>  {
     const messages = useMessages()
     const isBotTurn = useIsBotTurn()
+    const currentLocale = useLocale()
     const messageNumber = useMessageNumber()
 
     const { data: resultsMessage } = await useAsyncData(() => queryContent(currentLocale.value + "/results-message").findOne())
