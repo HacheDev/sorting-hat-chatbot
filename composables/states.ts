@@ -1,3 +1,4 @@
+import { ComputedRef } from "nuxt/dist/app/compat/capi"
 import Answer from "~~/utils/classes/Answer"
 import Question from "~~/utils/classes/Question"
 import Scores from "~~/utils/classes/Scores"
@@ -26,11 +27,6 @@ export const useQuestionsList = () => useState<Question[]>("questionsList")
  * @returns {Ref<number>} current question number
  */
 export const useQuestionNumber = () => useState<number>("questionNumber", () => 0)
-/**
- * 
- * @returns {Ref<number>} index of last message
- */
-export const useMessageNumber = () =>   useState<number>("messageNumber", () => -1)
 
 /**
  * 
@@ -79,3 +75,17 @@ export const useUserName = () =>    useState<string>("userName")
  * @returns {Ref<Scores>} current total scores
  */
 export const useTotalScores = () => useState<Scores>("totalScores", () =>  new Scores(0, 0, 0, 0))
+
+/**
+ * 
+ * @returns {ComputedRef<string>} last message id
+ */
+export const computedMessageId = () => computed<string>((): string => {
+    const messages = useMessages()
+    if(messages.value)    {
+        return "message--" + (messages.value.length - 1)
+    }
+    else    {
+        return ""
+    }
+})

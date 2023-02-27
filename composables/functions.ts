@@ -32,13 +32,11 @@ export const sendNameQuestion = async(duration: number): Promise<unknown> =>  {
     const currentQuestion = useCurrentQuestion()
     const questionsList = useQuestionsList()
     const questionNumber = useQuestionNumber()
-    const messageNumber = useMessageNumber()
 
     return new Promise(() => setTimeout(() =>   {
         currentQuestion.value = questionsList.value[questionNumber.value]
         messages.value = [new TextMessage("bot", nameQuestion.value.title, getMessageTime())]
         isBotTurn.value = false
-        ++messageNumber.value
     }, duration))
 }
 
@@ -55,7 +53,6 @@ export const sendAnswer = async() => {
         isBotTurn.value = true
 
         const questionNumber = useQuestionNumber()
-        const messageNumber = useMessageNumber()
         const messages = useMessages()
         const selectedAnswer = useSelectedAnswer()
         const questionsList = useQuestionsList()
@@ -66,7 +63,6 @@ export const sendAnswer = async() => {
         totalScores.value.addScores(selectedAnswer.value.scores)
         selectedAnswer.value.title = ""
         ++questionNumber.value
-        ++messageNumber.value
    
         if (questionsList.value.length <= questionNumber.value) {
             await sendResult(1500)
@@ -87,13 +83,11 @@ export const sendBotMessage = async(duration: number): Promise<unknown> => {
     const questionNumber = useQuestionNumber()
     const questionsList = useQuestionsList()
     const isBotTurn = useIsBotTurn()
-    const messageNumber = useMessageNumber()
     
     return new Promise(() => setTimeout(() =>   {
         currentQuestion.value = questionsList.value[questionNumber.value]
         messages.value.push(new TextMessage("bot", currentQuestion.value.title, getMessageTime()))
         isBotTurn.value = false
-        ++messageNumber.value
     }, duration))
 }
 
@@ -146,7 +140,6 @@ export const sendResult = async(duration: number): Promise<unknown> =>  {
     const messages = useMessages()
     const isBotTurn = useIsBotTurn()
     const currentLocale = useLocale()
-    const messageNumber = useMessageNumber()
 
     const { data: resultsMessage } = await useAsyncData(() => queryContent(currentLocale.value + "/results-message").findOne())
     const result: string = await getResult()
@@ -158,7 +151,6 @@ export const sendResult = async(duration: number): Promise<unknown> =>  {
         messages.value.push(new TextMessage("bot", result, getMessageTime()))
         messages.value.push(new TextMessage("bot", totalResults, getMessageTime()))
         isBotTurn.value = false
-        messageNumber.value += 2
     }, duration))
 }
 
@@ -167,7 +159,6 @@ export const sendResult = async(duration: number): Promise<unknown> =>  {
  */
 export const saveUserName = async() =>   {
     const currentLocale = useLocale()
-    const messageNumber = useMessageNumber()
     const messages = useMessages()
     const userName = useUserName()
 
@@ -178,7 +169,6 @@ export const saveUserName = async() =>   {
         userName.value = defaultUserName.value.defaultUserName
     }
     messages.value.push(new TextMessage("user", userName.value, getMessageTime()))
-    ++messageNumber.value
     useIsNameChosen().value = true
     await sendBotMessage(1500)
 }
@@ -187,9 +177,10 @@ export const saveUserName = async() =>   {
  * Function for scrolling into current message
  */
 export const scrollToMessage = () =>   {
-    const messageNumber = useMessageNumber()
-    const messageId: string = "message--" + messageNumber.value
-    const messageElement = document.getElementById(messageId)
+    
+    const messageId = computedMessageId()
+
+    const messageElement = document.getElementById(messageId.value)
     
     if(messageElement)  {
         messageElement.scrollIntoView({behavior: "smooth"})
@@ -201,14 +192,12 @@ export const scrollToMessage = () =>   {
  */
 export const restartChat = async() =>    {
     const questionNumber = useQuestionNumber()
-    const messageNumber = useMessageNumber()
     const isNameChosen = useIsNameChosen()
     const userName = useUserName()
     const totalScores = useTotalScores()
     const messages = useMessages()
 
     questionNumber.value = 0
-    messageNumber.value = -1
     isNameChosen.value = false
     userName.value = ""
     totalScores.value = new Scores(0, 0, 0, 0)
