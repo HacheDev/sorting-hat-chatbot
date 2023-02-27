@@ -1,14 +1,12 @@
 <template>
     <Transition name="answers-card">
         <div v-if="!isNameChosen" class="name-input-container">
-            <!-- <Transition name="name-container"> -->
                 <input class="name-input" v-if="!pending" v-model="userName" type="text" :placeholder="placeholders.name" @keypress.enter="saveUserName()" tabindex="1" >
                 <button class="name-submit" 
                     @click="saveUserName()" 
                 ><i class="icon icon-circle-right"></i>
                 <span class="submit-button-text">{{ placeholders.send }}</span>
                 </button>
-            <!-- </Transition> -->
         </div>
         
         <div v-else class="answers-container">
@@ -60,24 +58,14 @@
     align-content: center;
     align-items: center;
     background-color: @darkest-navy-blue;
-    .name-container-enter-active,
-    .name-container-leave-active   {
-        transition: all 1s ease;
-    }
-    .name-container-enter-from,
-    .name-container-leave-to {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    .name-container-leave-active    {
-        position: absolute;
-    }
     .name-input {
         border-radius: 9999px;
         height: auto;
         text-align: center;
         font-size: inherit;
         width: 80vw;
+        border: 1px solid gray;
+        padding: 10px;
     }
     .name-submit    {
         display: flex;
@@ -126,22 +114,15 @@
         align-items: center;
         height: auto;
         min-width: 50%;
-        width: fit-content;
+        width: 100%;
         .selected-answer   {
-            display: inline-flex;
-            color: black;
-            background-color: white;
-            justify-content: space-around;
-            width: fit-content;
-            text-align: center;
-            border-radius: 9999px;
             border: 1px solid gray;
-            align-items: center;
             padding: 10px;
-            flex: 1;
+            border-radius: 9999px;
             height: auto;
-            margin: 5px auto;
+            text-align: center;
             font-size: inherit;
+            width: 80vw;
         }
         .answer-submit  {
             display: flex;
@@ -260,7 +241,6 @@ const currentLocale = useLocale()
 const { pending, data: placeholders } = await useAsyncData(() =>   queryContent(currentLocale.value + "/placeholders").findOne())
 
 // get states from composables
-const isAnswerEmpty = useIsAnswerEmpty()
 const isNameChosen = useIsNameChosen()
 const userName = useUserName()
 const selectedAnswer = useSelectedAnswer()

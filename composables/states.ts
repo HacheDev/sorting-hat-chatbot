@@ -80,7 +80,7 @@ export const useTotalScores = () => useState<Scores>("totalScores", () =>  new S
  * 
  * @returns {ComputedRef<string>} last message id
  */
-export const computedMessageId = () => computed<string>((): string => {
+export const computeMessageId = () => computed<string>((): string => {
     const messages = useMessages()
     if(messages.value)    {
         return "message--" + (messages.value.length - 1)

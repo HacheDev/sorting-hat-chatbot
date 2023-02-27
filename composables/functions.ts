@@ -2,7 +2,7 @@ import Answer from "~~/utils/classes/Answer"
 import Scores from "~~/utils/classes/Scores"
 import TextMessage from "~~/utils/classes/TextMessage"
 import { getMessageTime } from "~~/utils/functions/getMessageTime"
-import { useIsNameChosen, useLocale, useTotalScores } from "./states"
+import { computeMessageId, useIsNameChosen, useLocale, useTotalScores } from "./states"
 
 /**
  * Sets selectedAnswer state
@@ -178,7 +178,7 @@ export const saveUserName = async() =>   {
  */
 export const scrollToMessage = () =>   {
     
-    const messageId = computedMessageId()
+    const messageId = computeMessageId()
 
     const messageElement = document.getElementById(messageId.value)
     
