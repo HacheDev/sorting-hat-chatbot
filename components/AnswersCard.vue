@@ -245,14 +245,13 @@ const isNameChosen = useIsNameChosen()
 const userName = useUserName()
 const selectedAnswer = useSelectedAnswer()
 const questionsLoaded = useQuestionsLoaded()
-const currentQuestion = useCurrentQuestion()
+
+//get computed values
+const currentQuestion = computeCurrentQuestion()
+const currentAnswers = computeCurrentAnswers()
+const numOfMessages = computeNumOfMessages()
 
 // placeholder for selected answer
 selectedAnswer.value = placeholders.value.answer
 
-// compute available answers of current question
-const currentAnswers = computed<Answer[]>(() =>  currentQuestion.value.answers)
-
-// compute number of messages, answers are available after user name message
-const numOfMessages = computed<number>(() => useMessages().value.length)
 </script>

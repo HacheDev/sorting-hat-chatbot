@@ -2,7 +2,7 @@ import Answer from "~~/utils/classes/Answer"
 import Scores from "~~/utils/classes/Scores"
 import TextMessage from "~~/utils/classes/TextMessage"
 import { getMessageTime } from "~~/utils/functions/getMessageTime"
-import { computeMessageId, useIsNameChosen, useLocale, useTotalScores } from "./states"
+import { useIsNameChosen, useLocale, useTotalScores } from "./states"
 
 /**
  * Sets selectedAnswer state
@@ -29,12 +29,8 @@ export const sendNameQuestion = async(duration: number): Promise<unknown> =>  {
     const { data: nameQuestion } = await useAsyncData(() => queryContent(currentLocale.value + "/name-question").findOne())
     const messages = useMessages()
     const isBotTurn = useIsBotTurn()
-    const currentQuestion = useCurrentQuestion()
-    const questionsList = useQuestionsList()
-    const questionNumber = useQuestionNumber()
 
     return new Promise(() => setTimeout(() =>   {
-        currentQuestion.value = questionsList.value[questionNumber.value]
         messages.value = [new TextMessage("bot", nameQuestion.value.title, getMessageTime())]
         isBotTurn.value = false
     }, duration))
@@ -46,7 +42,6 @@ export const sendNameQuestion = async(duration: number): Promise<unknown> =>  {
 export const sendAnswer = async() => {
     const isAnswerEmpty = useIsAnswerEmpty()
     const isBotTurn = useIsBotTurn()
-    const selectedAnswer = useSelectedAnswer()
     
     if(!isAnswerEmpty.value && !isBotTurn.value) {
         isAnswerEmpty.value = true
@@ -62,7 +57,6 @@ export const sendAnswer = async() => {
         messages.value.push(new TextMessage("user", selectedAnswer.value.title, getMessageTime()))
         totalScores.value.addScores(selectedAnswer.value.scores)
         selectedAnswer.value.title = ""
-        ++questionNumber.value
    
         if (questionsList.value.length <= questionNumber.value) {
             await sendResult(1500)
@@ -78,14 +72,13 @@ export const sendAnswer = async() => {
  * @returns {Promise}
  */
 export const sendBotMessage = async(duration: number): Promise<unknown> => {
-    const currentQuestion = useCurrentQuestion()
+    const currentQuestion = computeCurrentQuestion()
     const messages = useMessages()
     const questionNumber = useQuestionNumber()
-    const questionsList = useQuestionsList()
     const isBotTurn = useIsBotTurn()
     
     return new Promise(() => setTimeout(() =>   {
-        currentQuestion.value = questionsList.value[questionNumber.value]
+        ++questionNumber.value
         messages.value.push(new TextMessage("bot", currentQuestion.value.title, getMessageTime()))
         isBotTurn.value = false
     }, duration))
@@ -117,7 +110,6 @@ export const getResult = async(): Promise<string> => {
  */
 export const getTotalResults = async(): Promise<string> =>    {
     const currentLocale = useLocale()
-    const userName = useUserName()
     const totalScores = useTotalScores()
 
     const { data: resultsMessage } = await useAsyncData(() => queryContent(currentLocale.value + "/results-message").findOne())
@@ -140,6 +132,7 @@ export const sendResult = async(duration: number): Promise<unknown> =>  {
     const messages = useMessages()
     const isBotTurn = useIsBotTurn()
     const currentLocale = useLocale()
+    const questionNumber = useQuestionNumber()
 
     const { data: resultsMessage } = await useAsyncData(() => queryContent(currentLocale.value + "/results-message").findOne())
     const result: string = await getResult()
@@ -147,7 +140,7 @@ export const sendResult = async(duration: number): Promise<unknown> =>  {
     let totalResults: string = await getTotalResults()
     
     return new Promise(() => setTimeout(() =>   {
-
+        ++questionNumber.value
         messages.value.push(new TextMessage("bot", result, getMessageTime()))
         messages.value.push(new TextMessage("bot", totalResults, getMessageTime()))
         isBotTurn.value = false
