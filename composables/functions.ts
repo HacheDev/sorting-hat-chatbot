@@ -32,7 +32,6 @@ export const sendNameQuestion = async(duration: number): Promise<unknown> =>  {
 
     return new Promise(() => setTimeout(() =>   {
         messages.value = [new TextMessage("bot", nameQuestion.value.title, getMessageTime())]
-        isBotTurn.value = false
     }, duration))
 }
 
@@ -79,9 +78,7 @@ export const sendBotMessage = async(duration: number): Promise<unknown> => {
     
     return new Promise(() => setTimeout(() =>   {
         ++questionNumber.value
-        messages.value.push(new TextMessage("bot", currentQuestion.value.title, getMessageTime()))
-        isBotTurn.value = false
-    }, duration))
+        messages.value.push(new TextMessage("bot", currentQuestion.value.title, getMessageTime()))    }, duration))
 }
 
 
@@ -143,7 +140,6 @@ export const sendResult = async(duration: number): Promise<unknown> =>  {
         ++questionNumber.value
         messages.value.push(new TextMessage("bot", result, getMessageTime()))
         messages.value.push(new TextMessage("bot", totalResults, getMessageTime()))
-        isBotTurn.value = false
     }, duration))
 }
 

@@ -245,13 +245,18 @@ const isNameChosen = useIsNameChosen()
 const userName = useUserName()
 const selectedAnswer = useSelectedAnswer()
 const questionsLoaded = useQuestionsLoaded()
+const isBotTurn = useIsBotTurn()
 
 //get computed values
-const currentQuestion = computeCurrentQuestion()
 const currentAnswers = computeCurrentAnswers()
 const numOfMessages = computeNumOfMessages()
 
 // placeholder for selected answer
 selectedAnswer.value = placeholders.value.answer
+
+// watch changes in current answers to end bot's turn
+watch(currentAnswers, async() =>  {
+    isBotTurn.value = false
+})
 
 </script>
