@@ -5,7 +5,7 @@
             <div class="chat-content" v-if="!messages"></div>
             <div class="chat-content" v-else>
                 <TransitionGroup name="message" 
-                @enter="scrollToMessage()">
+                @enter="onEnter">
                     <Message 
                         v-for="(message, index) in messages" 
                         :key="message.content" 
@@ -92,7 +92,6 @@
 
 <script lang="ts" setup>
 import { useQuestionsList } from "~~/composables/states";
-import { scrollToMessage } from '~~/composables/functions';
 
 // load questions from content module with correct lang
 const currentLocale = useLocale()
@@ -116,6 +115,18 @@ sendNameQuestion(1500)
 
 // check if all questions have been answered
 const hasFinished = computed<boolean>(() => questionsList.value.length <= questionNumber.value)
+
+/**
+ * scroll into message when it enters in transitiongroup
+ * @param el 
+ * @param done 
+ */
+const onEnter = (el,done) =>    {
+    if(el)  {
+        el.scrollIntoView({behavior: "smooth"})
+    }
+    done()
+}
 
     
 </script>

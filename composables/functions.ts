@@ -163,20 +163,6 @@ export const saveUserName = async() =>   {
 }
 
 /**
- * Function for scrolling into current message
- */
-export const scrollToMessage = () =>   {
-    
-    const messageId = computeMessageId()
-
-    const messageElement = document.getElementById(messageId.value)
-    
-    if(messageElement)  {
-        messageElement.scrollIntoView({behavior: "smooth"})
-    }
-}
-
-/**
  * Function for restarting quiz and scores
  */
 export const restartChat = async() =>    {
